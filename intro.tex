@@ -3,20 +3,30 @@
 \usepackage[brazilian]{babel}
 \usepackage{fancyhdr}
 \usepackage{indentfirst}
-%\usepackage{hyperref}
+\usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{csquotes}
+\usepackage{caption}
+
 \MakeOuterQuote{"}
+
+\hypersetup{
+	colorlinks=true,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=cyan
+}
+
 
 \pagestyle{fancy}
 \pagestyle{empty}
 \fancyhead{} % Clear the header
-\fancyhead[C]{\hrulefill\ Introdução do Linux, Git e Python \hrulefill} 
+\fancyhead[C]{\hrulefill\ Introdução ao Linux e ao Python \hrulefill} 
 
 \begin{document}
 
-	\title{Introdução ao Linux, Git e programação em Python}
-	\date{\today}
+	\title{Introdução ao Linux e ao Python}
+	\date{}
 	\author{Omar Mesquita}
 	\maketitle
 	
@@ -53,10 +63,10 @@
 	Inicialmente, você pode se desesperar achando que será algo difícil, tedioso ou demorado para dominar, mas assim que
 	começar a praticar, as coisas vão ficando mais claras. 
 
-	\begin{figure}[h!]
+	\begin{figure}[ht!]
   		\centering
 		\includegraphics[scale=0.3]{figs/dk.jpeg} 
-  		\caption{O efeito Dunning Kruger. Não deixe que o primeiro pico te desmotive!}
+  		\caption*{O efeito Dunning Kruger. Não deixe que o primeiro pico te desmotive!}
 	\end{figure}
 	
 	Agora, podemos falar de comandos - vamos começar com os básicos, isto é, aqueles que você usa todo dia só que de forma gráfica
@@ -144,7 +154,7 @@
 	\paragraph{Movendo arquivos}
 	\paragraph{}
 
-	Mover arquivos funciona de forma análaga ao \texttt{cp}, com uma diferença significativa sendo que não é necessário 
+	Mover arquivos funciona de forma análoga ao \texttt{cp}, com uma diferença significativa sendo que não é necessário 
 	especificar a flag \texttt{-R} para mover pastas - basta usar o comando como se fossem arquivos ordinários. 
 
 	\begin{enumerate} 
@@ -153,9 +163,197 @@
 		\item{\texttt{mv meuTexto.txt Downloads/curriculo.txt}} 
 	\end{enumerate} 
 
+	Aqui, temos 3 usos distintos do \texttt{mv}. Vejamos um por um. No primeiro, estamos \textit{renomeando} a pasta de 
+	nome \texttt{Documentos} para \texttt{DocumentosSecretos}, a qual está no diretório no qual se está trabalhando. 
+
+
+	Em segundo lugar, de fato movemos o arquivo \texttt{meuVideo.mp4} na pasta Videos para a pasta Downloads. Repare, no 
+	entanto, que caso a pasta Downloads \textbf{não} existisse, o arquivo de vídeo seria "convertido" em um arquivo 
+	genérico de nome \texttt{Downloads}, o que acarretaria uma \textit{perda de informação} grave. Por mais óbvio que isso
+	seja, certifique-se de que o destino para o qual quer mover seus dados realmente exista. 
+
+
+	Finalmente, juntamos os dois casos acima em um terceiro. Aqui, movemos o arquivo \texttt{meuTexto.txt}, presente na pasta
+	atual, para a pasta Downloads \textbf{e} renomeamos o arquivo para \texttt{curriculo.txt}. Fizemos duas tarefas em um 
+	só comando. Esse é apenas um exemplo trivial de como é possível aumentar sua produtividade usando a CLI. 
+	
+	\paragraph{Apagando arquivos} 
+	\paragraph{} 
+
+	Essa seção requer atenção especial devido a possíveis catástrofes que podem acontecer no sistema. A não ser que você 
+	configure-o ou utilize pacotes/programas adicionais para criá-lo, o conceito de lixeira, presente em sistemas
+	como Windows e MacOS, \textbf{não existe} na linha de comando de SOs \textit{Unix-like} como Linux. 
+
+
+	Em essência, a lixeira nada mais é do que uma pasta especial, na qual os dados ficam indefinidamente até que a pessoa
+	utilizando o computador possa avaliar se os quer ou não. Nesse sentido, no mundo do CLI, para colocar algo na lixeira,
+	faríamos: 
+	
+	\vspace{1ex} 
+	\texttt{mv arquivoIndesejado /caminho/para/a/lixeira} 
+	\vspace{1ex} 
+
+	Mas isso não é nada prático. Poderíamos usar um apelido, ou \textit{alias}, para tornar o comando acima algo menor 
+	como \texttt{lixo}, mas este recruso será tratado em breve. No meio tempo, pode-se simplesmente apagar,
+	\textbf{de forma irreversível}, um dado arquivo. 
+
+	Para isso, vamos \textit{remover} o arquivo usando \texttt{rm}. A sintaxe é bem simples: 
+	\begin{enumerate} 
+		\item{\texttt{rm textoIndesejado.txt}} 
+		\item{\texttt{rm -r pastaIndesejada}} 
+		\item{\texttt{rm -i videoPotencialmenteIndesejado}} 
+	\end{enumerate}
+
+	Novamente, temos 3 casos. Nos dois primeiros, apagamos um arquivo de texto e, no segundo, apagamos uma pasta usando 
+	a flag recursiva \texttt{-r}. A terceira opção é mais segura, uma vez que a flag \texttt{-i} trata a ação de forma
+	interativa. O que isso quer dizer é que quando você clicar Enter para apagar, o sistema irá retornar uma mensagem 
+	pedindo que você confirme sua ação com um sim ou não. Geralmente, isso se dá assim:
+	
+	\vspace{1ex}
+	\texttt{rm: remove regular file?} 
+	\vspace{1ex} 
+	
+	Para o qual você digita \texttt{y} ou \texttt{n} para sim ou não, respectivamente. 
+
+	\subsection{Visualizando arquivos. O cat} 
+
+	Vamos tratar de uma ferramenta muito útil para visualizar arquivos de texto. Veja, o comando \texttt{cat} abre 
+	\textit{qualquer} tipo de arquivo para visualização. No entanto, abrir arquivos que não de texto irá renderizar 
+	uma visualização esquisita em algo parecido com hexadecimal.
+
+	\begin{figure}[ht!]
+  		\centering
+		\includegraphics[scale=0.3]{figs/brokenCat.png} 
+  		\caption*{Visualização quebrada de um PDF utilizando o cat}
+	\end{figure}
+
+
+	Por outro lado, executar o comando em um arquivo de texto normal, irá simplesmente mostrar seu conteúdo. 
+	Suponha que você tenha um arquivo chamado \texttt{listaDeCompras} estruturado da seguinte forma:
+
+	\begin{enumerate}
+		\item{Banana}
+		\item{Laranja} 
+		\item{Livro de Álgebra Linear} 
+		\item{Leite desnatado} 
+		\item{Cubo mágico} 
+	\end{enumerate} 
+
+	Rodar \texttt{cat listaDeCompras} irá lhe mostrar exatamente uma lista estruturada da forma como você a escreveu. 
+	Note que desde que o arquivo seja de texto, sua visualização será igual. Isso significa que caso você receba um 
+	arquivo de texto do Windows, isto é, terminado em \texttt{.txt} e e ele estiver em um formato universal no qual 
+	seu computador trabalha como UTF-8 ou ASCII e não estiver corrompido, sua visualização será igual a de um arquivo 
+	de texto do Linux. Para visualizá-lo: 
+
+	\vspace{1ex}
+	\texttt{cat textoDoWindows.txt} 
+	\vspace{1ex} 
+
+	\subsection{Editando textos} 
+
+	O assunto edição de textos no terminal é extenso e vai além do que esse livro tem em mente. Apesar disso, umas impressões
+	básicas serão passadas aqui. Imagine que você queira escrever a lista do tópico anterior em um arquivo chamado 
+	\texttt{compras.txt}. Para isso, você faria: 
+	
+	\vspace{1ex} 
+	\texttt{nano compras.txt} 
+	\vspace{1ex}
+
+	Entenda que \texttt{nano} não é exatamente um "comando" como estamos tratando aqui. Ele é apenas um dos inúmeros 
+	programas de edição de texto CLI que existem. Eu o utilizei devido à sua facilidade para pessoas novas no mundo 
+	do terminal. Outras opções são o \texttt{emacs}, \texttt{vim} (meu preferido) e \texttt{micro}. 
+
+	\section{Python} 
+
+	Nessa seção iremos iniciar a tratar do assunto \textbf{programação de computadores}. No contexto desse livreto, 
+	entende-se por escrever \textit{scripts}, traduzindo literalmente como "roteiros", que instruem o computador a fazer
+	determinada(s) ação(ões). Como estamos em um nível iniciante, a melhor linguagem de programação para essa tarefa 
+	é o Python 3. 
+
+	\subsection{Contexto técnico} 
+
+	A linguagem Python é \textit{interpretada}, o que significa que o código escrito por você \textbf{não} é "empacotado" e
+	convertido em binário (0s e 1s que o computador lê em nível fundamental) como ocorre em linguagens \textit{compiladas}. 
+	Isso gera um certo \textit{overhead} ("atraso") de performance para o programa ao mesmo tempo que proporciona grande 
+	flexibilidade à linguagem. Sua natureza flexível, com o uso de \textbf{módulos}, é um dos pontos que fizeram Python 
+	tão popular na computação moderna. 
+
+	\subsection{Instalando módulos. O pip}
+
+	Para tirar proveito dessas "extensões" da linguagem, devemos incluí-las em seu interpretador. Para tanto, vamos usar
+	o gerenciador de pacotes nativo do Python para baixar os módulos diretamente do \href{https://pypi.org/}{PyPI}.
+	Esse programa se chama \texttt{pip} e pode ser invocado diretamente da linha de comando: 
+
+	\vspace{1ex}
+	\texttt{pip install módulo1 módulo2 módulo3 ...} (1)
+	\vspace{1ex} 
+
+	Caso esteja usando um sistema Linux atual, é esperado que o pip já esteja instalado no sistema (assim como o Python). 
+	Caso contrário, instale-o pelo próprio terminal. Em sistemas Ubuntu/Debian, você faria: 
+
+	\vspace{1ex} 
+	\texttt{sudo apt install python python-pip} (2)
+	\vspace{1ex} 
+
+	e digitaria sua senha de usuário. Em seguida, tente reinstalar os módulos pelo pip. Note, contudo, que rodar o comando 
+	(1) irá instalar os módulos no interpretador \textbf{global} do Python 3. Isso não é exatamente um problema, mas na maior 
+	parte dos casos, é tido como uma má prática porque você pode querer trabalhar com o mesmo módulo de diferentes versões,
+	podem acontecer problemas com determinadas versões/dependências e a técnica que vou mostrar em seguida deixa seu trabalho
+	mais organizado. 
+
+	\begin{figure}[ht!]
+  		\centering
+		\includegraphics[scale=0.3]{figs/modules.png} 
+  		\caption*{Alguns dos módulos mais populares de Python}
+	\end{figure}
+
+	\subsection{Ambiente virtual. O venv} 
+
+	Para solucionar esse "problema", as pessoas desenvolvedoras por trás do Python vieram com um conceito chamado ambiente
+	virtual, o qual pode ser criado utilizando um módulo nativo da linguagem, espertamente chamado de \texttt{venv} para 
+	\textit{Virtual Environment}.
+
+	Suponha que você desenvolva um aplicativo de cálculo numérico e quer torná-lo disponível em seu site para uso público.
+	Você poderia logar em seu servidor com SSH e em sua \textit{home} criar um ambiente que irá executar o aplicativo. 
+	Vamos criá-lo: 
+	
+	\vspace{1ex}
+	\texttt{python -m venv calculoNumerico} 
+	\vspace{1ex} 
+
+	Veja aqui que passei a flag \texttt{-m} para o interpretador, uma vez que não estou apenas invocando o interpretador Python,
+	mas um módulo específico para criação de \textit{venvs}. Esse módulo, por sua vez, recebe um argumento que é o nome do 
+	ambiente virtual.
+
+	Agora existe uma pasta chamada \texttt{calculoNumerico} em seu diretório, a qual pode ser acessado usando \texttt{cd}. 
+	Ao entrar na pasta do \textit{venv}, você ainda \textbf{não} estará propriamente no ambiente. Veja, usando \texttt{ls},
+	que existem algumas sub-pastas como \texttt{bin, include, lib, lib64} e um arquivo \texttt{pyenv.cfg}. O que aconteceu aqui
+	é que agora existe um "mini Python" nessa pasta, e você pode adicionar, mover e apagar pastas e arquivos à vontade dentro
+	do diretório do \textit{venv} sem afetar a instalação global. 
+
+	\subsubsection{Ativando o ambiente} 
+
+	Para propriamente "entrar" no \textit{venv}, você deve carregar uma configuração específica para a sua \textit{shell}, que
+	reconhece os comandos digitados no terminal. Essa configuração está na forma de um script dentro da pasta \texttt{bin} do
+	ambiente virtual e pode ser carregada usando o comando \texttt{source}. Então, dentro da pasta de seu venv, faça:
+
+	\vspace{1ex}
+	\texttt{source bin/activate}
+	\vspace{1ex} 
+
+	o que irá ativar o ambiente virtual. A partir de agora, podemos instalar os pacotes usando \texttt{pip} e eles estarão
+	isolados da instalação global do Python. 
+
+	\vspace{1ex} 
+	\texttt{(calculoNumerico) pip install numpy Flask pandas} 
+	\vspace{1ex} 
+
+	Isso irá instalar módulos para computação numérica (\texttt{numpy}), \textit{backend} (\texttt{Flask}) 
+	análise de dados (\texttt{pandas}) no ambiente virtual de nome \texttt{calculoNumerico}. Após editar e executar todos
+	os arquivos necessários, saia do ambiente virtual simplesmente digitando \texttt{deactivate}. 
+
 
 \end{document}
 
 %\section{Git}
-%\section{Python}
 
