@@ -1,7 +1,6 @@
 \documentclass{article}
 
 \usepackage[brazilian]{babel}
-\usepackage{fancyhdr}
 \usepackage{indentfirst}
 \usepackage{hyperref}
 \usepackage{graphicx}
@@ -17,11 +16,7 @@
 	urlcolor=cyan
 }
 
-
-\pagestyle{fancy}
 \pagestyle{empty}
-\fancyhead{} % Clear the header
-\fancyhead[C]{\hrulefill\ Introdução ao Linux e ao Python \hrulefill} 
 
 \begin{document}
 
@@ -69,7 +64,8 @@
 		\includegraphics[scale=0.3]{figs/dk.jpeg} 
   		\caption*{O efeito Dunning Kruger. Não deixe que o primeiro pico te desmotive!}
 	\end{figure}
-	
+
+	\newpage
 	Falando de comandos agora - vamos começar com os básicos, isto é, aqueles que você usa todo dia só que de forma gráfica
 	em programas como o Explorador do Windows. Tomando o Ubuntu Linux como referência, começamos nossa jornada no mundo CLI
 	procurando um aplicativo chamado \textbf{Terminal}. Ao clicar nele, você irá se deparar com algo assim: 
@@ -78,7 +74,7 @@
 	\texttt{user@linux: ~}
 	\vspace{1ex}
 
-	O que significa que a pessoa de nome \texttt{user} está, ou "at" em inglês, (\texttt{@}) no computador de nome
+	O que significa que a pessoa usuária de nome \texttt{user} está, ou "at" em inglês, (\texttt{@}) no computador de nome
 	\texttt{linux}. Depois dos dois pontos, irão aparecer os comandos que você digitar. Tais comandos serão interpretados pela
 	\textit{shell} - um programa que roda "por trás das cortinas" e analisa os comandos para saber se são válidos ou não.
 
@@ -266,6 +262,8 @@
 	programas de edição de texto CLI que existem. Fiz referência a ele devido à sua fácil utilização, mas existem
 	outras opções mais configuráveis como o \texttt{emacs}, o \texttt{vim} (meu preferido) e o \texttt{micro}. 
 
+	\newpage
+
 	\section{Python} 
 
 	Nessa seção iremos iniciar a tratar do assunto \textbf{programação de computadores}. No contexto desse livreto, 
@@ -310,6 +308,8 @@
   		\caption*{Alguns dos módulos mais populares de Python}
 	\end{figure}
 
+	\newpage
+
 	\subsection{Ambiente virtual. O venv} 
 
 	Para solucionar esse "problema", as pessoas desenvolvedoras por trás do Python vieram com um conceito chamado ambiente
@@ -351,7 +351,7 @@
 	\texttt{(calculoNumerico) pip install numpy Flask pandas} 
 	\vspace{1ex} 
 
-	Isso irá instalar módulos para computação numérica (\texttt{numpy}), \textit{backend} (\texttt{Flask}) 
+	Isso irá instalar módulos para computação numérica (\texttt{numpy}), \textit{backend} (\texttt{Flask}) e
 	análise de dados (\texttt{pandas}) no ambiente virtual de nome \texttt{calculoNumerico}. Após editar e executar todos
 	os arquivos necessários, saia do ambiente virtual simplesmente digitando \texttt{deactivate} no terminal. 
 
