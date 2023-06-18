@@ -42,9 +42,10 @@
 	Windows da Microsoft ou o macOS da Apple. 
 
 
-	O que torna ele especial é o alto grau de \textit{liberdade} ofertado pela plataforma, o qual facilita muito a vida de nós, 
-	desenvolvedores. Esse aspecto do sistema se expressa em várias características do Linux como o fato de ser código aberto. 
-	No entanto, para fins desse livreto, ele se resume à agilidade e à eficiência de sua \textbf{linha de comando}.
+	O que torna ele especial é seu alto grau de \textit{liberdade} , o qual facilita muito a vida de quem trabalha com 
+	desenvolvimento, operações e/ou administração de sistemas. Esse aspecto do Linux se expressa em várias características 
+	como o fato de ser código aberto. No entanto, para fins desse livreto, ele se resume à agilidade
+	e à eficiência de sua \textbf{linha de comando}.
 
 	\subsection{Linha de comando? Aquele négocio de 1990?} 
 
@@ -69,45 +70,48 @@
   		\caption*{O efeito Dunning Kruger. Não deixe que o primeiro pico te desmotive!}
 	\end{figure}
 	
-	Agora, podemos falar de comandos - vamos começar com os básicos, isto é, aqueles que você usa todo dia só que de forma gráfica
-	em programas como o Explorador do Windows. Para digitar comandos, procuramos o aplicativo chamado \textbf{terminal} no 
-	nosso sistema Linux. Ao clilcar nele, você irá se deparar com algo assim: 
+	Falando de comandos agora - vamos começar com os básicos, isto é, aqueles que você usa todo dia só que de forma gráfica
+	em programas como o Explorador do Windows. Tomando o Ubuntu Linux como referência, começamos nossa jornada no mundo CLI
+	procurando um aplicativo chamado \textbf{Terminal}. Ao clicar nele, você irá se deparar com algo assim: 
 	
 	\vspace{1ex}
-	\texttt{user@computador: ~}
+	\texttt{user@linux: ~}
 	\vspace{1ex}
 
-	O que significa que o usuário de nome \texttt{user} está, ou "at" em inglês, (\texttt{@}) no computador de nome
-	\texttt{computador}. Depois dos dois pontos, irá aparecer os comandos que você digitar. Geralmente, a primeira coisa
-	que se faz ao entrar no computador é saber onde você está. 
+	O que significa que a pessoa de nome \texttt{user} está, ou "at" em inglês, (\texttt{@}) no computador de nome
+	\texttt{linux}. Depois dos dois pontos, irão aparecer os comandos que você digitar. Tais comandos serão interpretados pela
+	\textit{shell} - um programa que roda "por trás das cortinas" e analisa os comandos para saber se são válidos ou não.
+
+	Dado esse contexto, podemos começar a usar o computador com o poder da CLI. Geralmente, a primeira coisa que se faz ao 
+	entrar no computador é saber onde você está. 
 	
 	\subsubsection{Onde estou? O pwd}
 	Para descobrir sua localização no sistema de arquivos, digite \texttt{pwd} e pressione Enter. Esse comando vêm de 
 	\textit{print working directory}, o que traduz, a grosso modo, para "mostre o diretório no qual se está trabalhando". O
-	resultado esperado é um caminho ou \textit{path} como \texttt{/home/usuario}. 
+	resultado esperado é um caminho ou \textit{path} como \texttt{/home/user}. 
 
-	Isso indica que você está na pasta pessoal, ou "lar", do usuário de nome \texttt{usuario}. Essa pasta, por sua vez, está 
+	Isso indica que você está na pasta pessoal, ou "lar", de \texttt{user}. Essa pasta, por sua vez, está 
 	na coleção de "lares" das pessoas que usam o sistema (\texttt{/home}). Por fim, essa coleção é só mais uma pasta no que 
 	se chama de \textbf{raiz} do sistema de arquivos, representada por um \texttt{/}. 
 
 	\subsubsection{O que eu tenho? O ls} 
 
 	Agora que você sabe onde está, como descobrir o que tem em cada pasta? Para isso, use o comando \texttt{ls}. Isso deve
-	retornar a lista de arquivos e pastas que estão dentro do diretório no qual está trabalhando. Por exemplo, em um sistema
-	de uso pessoal, é esperado que \texttt{/home/usuario} tenha pastas como \texttt{Videos, Downloads, Imagens, Musica}, entre
+	retornar a \textit{lista} de arquivos e pastas que estão dentro do diretório no qual está trabalhando. Por exemplo, em um sistema
+	de uso pessoal, é esperado que \texttt{/home/user} tenha pastas como \texttt{Videos, Downloads, Imagens, Musica}, entre
 	outras. 
 	
 	\subsubsection{Mudança de diretório. O cd} 
 
 	Você também vai querer entrar e sair de demais pastas durante seu trabalho no computador. O comando de \textit{change
-	directory}, \texttt{cd}, permite a navegação no sistema. Para acessar a pasta um nível acima da qual você está use 
+	directory}, \texttt{cd}, permite a navegação no sistema. Para acessar a pasta um nível acima da qual você está, use 
 	\texttt{cd ..} 
 
 
 	Caso o diretório esteja na mesma pasta em que você se encontra, simplesmente adicione o nome desta depois do comando. 
 	Por exemplo, \texttt{cd Videos} te leva aos seus vídeos. Você pode, também, ir para um \textit{local qualquer} no sistema
-	de arquivos digitando seu \textit{path}. Para acessar uma pasta com programas instalados, use seu caminho em conjunto 
-	com o comando: 
+	de arquivos digitando seu \textit{path}. Para acessar uma pasta com programas instalados, use seu caminho como 
+	\textbf{argumento} do comando. Por exemplo: 
 	
 	\vspace{1ex}
 	\texttt{cd /usr/bin} 
@@ -115,8 +119,7 @@
 
 	\subsubsection{Entrada e saída (I/O)}
 
-	Aqui, trataremos de comandos que fazem \textit{writes}, ou "escritas", no disco do computador e, portanto, entram e saiem
-	com bytes em disco. 
+	Aqui, trataremos de comandos que fazem \textit{writes}, ou "escritas", e, portanto, entram e saiem com \textit{bytes} em disco. 
 
 	\paragraph{Criação de arquivo:} 
 	\paragraph{}
@@ -125,7 +128,7 @@
 	\begin{enumerate} 
 		\item{Arquivo de texto: \texttt{touch Documentos/meuTexto.txt}} 
 		\item{Arquivo de vídeo: \texttt{touch ../meuVideo.mp4}}
-		\item{Arquivo de biblioteca: \texttt{touch /minhaBiblioteca.so}}
+		\item{Arquivo de imagem: \texttt{touch /porDoSol.png}}
 		\item{Arquivo qualquer: \texttt{touch arquivoGenerico}}
 	\end{enumerate}
 
@@ -139,7 +142,7 @@
 
 
 	Tá, temos coisas novas aqui. Primeiramente, repare que o comando toma dois parâmetros. O primeiro é 
-	o \textit{o que será copiado}, enquanto que o segundo é \textit{para onde} o objeto será copiado. 
+	o caminho do objeto \textit{a ser copiado}, enquanto que o segundo é o caminho \textit{para onde} ele será copiado. 
 	
 	Em segundo lugar, veja no caso 1 que copiei o arquivo de texto \texttt{meuTexto.txt} da pasta \texttt{Documentos} 
 	para o diretório no qual \textit{atualmente estou}. Se lembra que \texttt{..} representa a pasta um nível acima
@@ -194,7 +197,7 @@
 	\vspace{1ex} 
 
 	Mas isso não é nada prático. Poderíamos usar um apelido, ou \textit{alias}, para tornar o comando acima algo menor 
-	como \texttt{lixo}, mas este recruso será tratado em breve. No meio tempo, pode-se simplesmente apagar,
+	como \texttt{lixo}, mas este recurso será tratado em breve. No meio tempo, pode-se simplesmente apagar,
 	\textbf{de forma irreversível}, um dado arquivo. 
 
 	Para isso, vamos \textit{remover} o arquivo usando \texttt{rm}. A sintaxe é bem simples: 
@@ -228,7 +231,7 @@
 	\end{figure}
 
 
-	Por outro lado, executar o comando em um arquivo de texto normal, irá simplesmente mostrar seu conteúdo. 
+	Por outro lado, executar o comando em um arquivo de texto normal, irá mostrar corretamente seu conteúdo. 
 	Suponha que você tenha um arquivo chamado \texttt{listaDeCompras} estruturado da seguinte forma:
 
 	\begin{enumerate}
@@ -239,8 +242,8 @@
 		\item{Cubo mágico} 
 	\end{enumerate} 
 
-	Rodar \texttt{cat listaDeCompras} irá lhe mostrar exatamente uma lista estruturada da forma como você a escreveu. 
-	Note que desde que o arquivo seja de texto, sua visualização será igual. Isso significa que caso você receba um 
+	Rodar \texttt{cat listaDeCompras} irá lhe mostrar uma lista estruturada exatamente igual da forma como você a escreveu. 
+	Note que desde que o arquivo seja de texto, sua visualização será idêntica. O que isso significa é que caso você receba um 
 	arquivo de texto do Windows, isto é, terminado em \texttt{.txt} e e ele estiver em um formato universal no qual 
 	seu computador trabalha como UTF-8 ou ASCII e não estiver corrompido, sua visualização será igual a de um arquivo 
 	de texto do Linux. Para visualizá-lo: 
@@ -251,8 +254,8 @@
 
 	\subsection{Editando textos} 
 
-	O assunto edição de textos no terminal é extenso e vai além do que esse livro tem em mente. Apesar disso, umas impressões
-	básicas serão passadas aqui. Imagine que você queira escrever a lista do tópico anterior em um arquivo chamado 
+	O assunto edição de textos no terminal é extenso e vai além do que esse livro propõe. Ainda assim, vou lhe mostrar como abrir 
+	um arquivo de texto e começar a editá-lo. Imagine que você queira escrever a lista do tópico anterior em um arquivo chamado 
 	\texttt{compras.txt}. Para isso, você faria: 
 	
 	\vspace{1ex} 
@@ -260,15 +263,15 @@
 	\vspace{1ex}
 
 	Entenda que \texttt{nano} não é exatamente um "comando" como estamos tratando aqui. Ele é apenas um dos inúmeros 
-	programas de edição de texto CLI que existem. Eu o utilizei devido à sua facilidade para pessoas novas no mundo 
-	do terminal. Outras opções são o \texttt{emacs}, \texttt{vim} (meu preferido) e \texttt{micro}. 
+	programas de edição de texto CLI que existem. Fiz referência a ele devido à sua fácil utilização, mas existem
+	outras opções mais configuráveis como o \texttt{emacs}, o \texttt{vim} (meu preferido) e o \texttt{micro}. 
 
 	\section{Python} 
 
 	Nessa seção iremos iniciar a tratar do assunto \textbf{programação de computadores}. No contexto desse livreto, 
-	entende-se por escrever \textit{scripts}, traduzindo literalmente como "roteiros", que instruem o computador a fazer
+	irei defini-la como escrever \textit{scripts}, traduzindo literalmente como "roteiros", que instruem o computador a fazer
 	determinada(s) ação(ões). Como estamos em um nível iniciante, a melhor linguagem de programação para essa tarefa 
-	é o Python 3. 
+	é o Python. 
 
 	\subsection{Contexto técnico} 
 
@@ -288,15 +291,15 @@
 	\texttt{pip install módulo1 módulo2 módulo3 ...} (1)
 	\vspace{1ex} 
 
-	Caso esteja usando um sistema Linux atual, é esperado que o pip já esteja instalado no sistema (assim como o Python). 
+	Caso esteja usando um sistema Linux atual, é esperado que o \texttt{pip} já esteja instalado no sistema (assim como o Python). 
 	Caso contrário, instale-o pelo próprio terminal. Em sistemas Ubuntu/Debian, você faria: 
 
 	\vspace{1ex} 
 	\texttt{sudo apt install python python-pip} (2)
 	\vspace{1ex} 
 
-	e digitaria sua senha de usuário. Em seguida, tente reinstalar os módulos pelo pip. Note, contudo, que rodar o comando 
-	(1) irá instalar os módulos no interpretador \textbf{global} do Python 3. Isso não é exatamente um problema, mas na maior 
+	e digitaria sua senha de usuário. Em seguida, tente reinstalar os módulos pelo \texttt{pip}. Note, contudo, que rodar o comando 
+	(1) irá instala-los no interpretador \textbf{global} do Python. Isso não é exatamente um problema, mas na maior 
 	parte dos casos, é tido como uma má prática porque você pode querer trabalhar com o mesmo módulo de diferentes versões,
 	podem acontecer problemas com determinadas versões/dependências e a técnica que vou mostrar em seguida deixa seu trabalho
 	mais organizado. 
@@ -314,7 +317,7 @@
 	\textit{Virtual Environment}.
 
 	Suponha que você desenvolva um aplicativo de cálculo numérico e quer torná-lo disponível em seu site para uso público.
-	Você poderia logar em seu servidor com SSH e em sua \textit{home} criar um ambiente que irá executar o aplicativo. 
+	Você poderia logar em seu servidor com SSH e criar um ambiente na sua \textit{home} que irá conter o aplicativo. 
 	Vamos criá-lo: 
 	
 	\vspace{1ex}
@@ -325,7 +328,7 @@
 	mas um módulo específico para criação de \textit{venvs}. Esse módulo, por sua vez, recebe um argumento que é o nome do 
 	ambiente virtual.
 
-	Agora existe uma pasta chamada \texttt{calculoNumerico} em seu diretório, a qual pode ser acessado usando \texttt{cd}. 
+	Agora existe uma pasta chamada \texttt{calculoNumerico} em seu diretório atual, a qual pode ser acessada usando \texttt{cd}. 
 	Ao entrar na pasta do \textit{venv}, você ainda \textbf{não} estará propriamente no ambiente. Veja, usando \texttt{ls},
 	que existem algumas sub-pastas como \texttt{bin, include, lib, lib64} e um arquivo \texttt{pyenv.cfg}. O que aconteceu aqui
 	é que agora existe um "mini Python" nessa pasta, e você pode adicionar, mover e apagar pastas e arquivos à vontade dentro
@@ -333,9 +336,9 @@
 
 	\subsubsection{Ativando o ambiente} 
 
-	Para propriamente "entrar" no \textit{venv}, você deve carregar uma configuração específica para a sua \textit{shell}, que
-	reconhece os comandos digitados no terminal. Essa configuração está na forma de um script dentro da pasta \texttt{bin} do
-	ambiente virtual e pode ser carregada usando o comando \texttt{source}. Então, dentro da pasta de seu venv, faça:
+	Para propriamente "entrar" no \textit{venv}, você deve carregar uma configuração específica para a sua \textit{shell}. 
+	Essa configuração está na forma de um script dentro da pasta \texttt{bin} do ambiente virtual e pode ser carregada usando o 
+	comando \texttt{source}. Então, dentro da pasta de seu \textit{venv}, faça:
 
 	\vspace{1ex}
 	\texttt{source bin/activate}
@@ -350,7 +353,7 @@
 
 	Isso irá instalar módulos para computação numérica (\texttt{numpy}), \textit{backend} (\texttt{Flask}) 
 	análise de dados (\texttt{pandas}) no ambiente virtual de nome \texttt{calculoNumerico}. Após editar e executar todos
-	os arquivos necessários, saia do ambiente virtual simplesmente digitando \texttt{deactivate}. 
+	os arquivos necessários, saia do ambiente virtual simplesmente digitando \texttt{deactivate} no terminal. 
 
 
 \end{document}
