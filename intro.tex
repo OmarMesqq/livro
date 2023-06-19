@@ -20,7 +20,7 @@
 
 \begin{document}
 
-	\title{Introdução ao Linux e ao Python}
+	\title {Computação básica \\[1ex] \large Uma simples introdução ao Linux, Python e Git}
 	\date{}
 	\author{Omar Mesquita}
 	\maketitle
@@ -33,13 +33,13 @@
 	\subsection{Por que?}
 	
 	Para nosso projeto (e muitos outros em outros grupos de pesquisa, empresas, etc) será simplesmente mais conveniente 
-	usar o Linux. Caso não tenha ouvido falar, o Linux, também chamado de GNU/Linux, é um sistema operacional, como o 
+	usar o Linux. Caso não tenha ouvido falar, o \href{https://pt.wikipedia.org/wiki/Linux}{Linux}, também chamado de GNU/Linux, é um sistema operacional, como o 
 	Windows da Microsoft ou o macOS da Apple. 
 
 
 	O que torna ele especial é seu alto grau de \textit{liberdade} , o qual facilita muito a vida de quem trabalha com 
 	desenvolvimento, operações e/ou administração de sistemas. Esse aspecto do Linux se expressa em várias características 
-	como o fato de ser código aberto. No entanto, para fins desse livreto, ele se resume à agilidade
+	como o fato de ser \href{https://pt.wikipedia.org/wiki/C%C3%B3digo_aberto}{código aberto}. No entanto, para fins desse livreto, ele se resume à agilidade
 	e à eficiência de sua \textbf{linha de comando}.
 
 	\subsection{Linha de comando? Aquele négocio de 1990?} 
@@ -55,7 +55,7 @@
 	O lado bom é que ninguém sabe todos os comandos e realmente não é necessário. A \textbf{curva de aprendizado} pode, 
 	inicialmente, parecer muito difícil de superar, mas não se iluda, você irá entender rapidinho. 
 
-	Se familiarizar com a CLI, como qualquer processo de aprendizado, está sujeito ao \textit{Efeito Dunning Kruger}. 
+	Se familiarizar com a CLI, como qualquer processo de aprendizado, está sujeito ao \href{https://jornal.usp.br/radio-usp/o-que-e-o-efeito-dunning-kruger/}{efeito Dunning Kruger}. 
 	Inicialmente, você pode se desesperar achando que será algo difícil, tedioso ou demorado para dominar, mas assim que
 	começar a praticar, as coisas vão ficando mais claras. 
 
@@ -144,7 +144,7 @@
 	para o diretório no qual \textit{atualmente estou}. Se lembra que \texttt{..} representa a pasta um nível acima
 	na hierarquia? Então, um ponto sozinho simboliza a pasta na qual você está trabalhando. 
 	
-	Por fim, para copiar uma pasta passamos uma \textbf{flag} para \texttt{cp} junto de seus argumentos. 
+	Por fim, para copiar uma pasta passamos uma \textit{flag} para \texttt{cp} junto de seus argumentos. 
 	A \textit{flag} \texttt{-R} funciona como um modificador do comando e, nesse caso, manda o \texttt{cp}
 	copiar \textbf{recursivamente} o arquivo especificado, ou seja, o comando "entra" na pasta e copia o que
 	tem dentro dela, \textbf{incluindo} a própria pasta. 
@@ -154,7 +154,7 @@
 	\paragraph{}
 
 	Mover arquivos funciona de forma análoga ao \texttt{cp}, com uma diferença significativa sendo que não é necessário 
-	especificar a flag \texttt{-R} para mover pastas - basta usar o comando como se fossem arquivos ordinários. 
+	especificar a \textit{flag} \texttt{-R} para mover pastas - basta usar o comando como se fossem arquivos ordinários. 
 
 	\begin{enumerate} 
 		\item{\texttt{mv Documentos DocumentosSecretos}} 
@@ -204,7 +204,7 @@
 	\end{enumerate}
 
 	Novamente, temos 3 casos. Nos dois primeiros, apagamos um arquivo de texto e, no segundo, apagamos uma pasta usando 
-	a flag recursiva \texttt{-r}. A terceira opção é mais segura, uma vez que a flag \texttt{-i} trata a ação de forma
+	a \textit{flag} recursiva \texttt{-r}. A terceira opção é mais segura, uma vez que a \textit{flag} \texttt{-i} trata a ação de forma
 	interativa. O que isso quer dizer é que quando você clicar Enter para apagar, o sistema irá retornar uma mensagem 
 	pedindo que você confirme sua ação com um sim ou não. Geralmente, isso se dá assim:
 	
@@ -304,7 +304,7 @@
 
 	\begin{figure}[ht!]
   		\centering
-		\includegraphics[scale=0.3]{figs/modules.png} 
+		\includegraphics[scale=0.2]{figs/modules.png} 
   		\caption*{Alguns dos módulos mais populares de Python}
 	\end{figure}
 
@@ -324,7 +324,7 @@
 	\texttt{python -m venv calculoNumerico} 
 	\vspace{1ex} 
 
-	Veja aqui que passei a flag \texttt{-m} para o interpretador, uma vez que não estou apenas invocando o interpretador Python,
+	Veja aqui que passei a \textit{flag} \texttt{-m} para o interpretador, uma vez que não estou apenas invocando o interpretador Python,
 	mas um módulo específico para criação de \textit{venvs}. Esse módulo, por sua vez, recebe um argumento que é o nome do 
 	ambiente virtual.
 
