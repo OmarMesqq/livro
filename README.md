@@ -1,1 +1,3 @@
-## Uma introdução ao Linux, Git e programação 
+## Computação básica
+### Uma simples introdução ao Linux, Python e Git 
+#### Por Omar Mesquita
