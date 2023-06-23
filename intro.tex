@@ -374,6 +374,17 @@
 	\texttt{sudo apt install git}
 	\vspace{1ex}
 
+	Além de ter o Git instalado, precisamos gerar um \textit{token} para fazer as operações abordadas aqui. 
+	O motivo de criar um é que, apesar do Git atualmente \href{https://www.cloudflare.com/pt-br/learning/ssl/what-is-https/}{usar HTTPS}, digitar
+	sua senha para realizar ações poderosas como gerar chaves e apagar repositórios pode ser perigoso caso sua senha vaze. 
+
+	Assim, criaremos um token aleatório e seguro pelo próprio GitHub para modificar nosso projeto localmente. 
+	\begin{enumerate}
+		\item{Acesse a \href{https://github.com/settings/tokens}{página de tokens do GitHub}}
+		\item{Clique em gerar novo token (clássico)}
+		\item{Nas capacidades do token, selecione apenas a caixinha \texttt{repo}}
+	\end{enumerate}
+
 	Agora, podemos começar a fazer upload de nosso código e gerenciar suas versões a partir do nosso próprio computador! Mas antes,
 	algumas definições importantes. 
 
@@ -599,6 +610,7 @@
   de sua organização/empresa, as que vierem depois de você e, não ironicamente, você no futuro. 
 
   \subsubsection{Saindo. O push}
+  \label{sec:push}
 
   Caso esteja se perguntando porque o \texttt{git commit} não é a etapa final para mudar algo no remoto, a resposta é que 
   \textit{"é por design"}. Por ora, vamos assumir que os commits são armazenados num registro, ou \textit{log}, do seu repositório. 
@@ -691,9 +703,47 @@
   do repositório não será adicionado para mudanças remotas com o \texttt{git add}.
   
   
-\end{document}
+  \subsubsection{Atualizando local com mudanças do remoto}
 
-% Sobre o autor
-% OverLeaf
-% StackOverflow
-% ArchWiki e Wikipedia
+  Assim como vimos o "empurrar" do Git, vemos agora o "puxar". O que fizemos em \href{sec:push}{3.2.5} foi atualizar o remoto com 
+  mudanças locais. Suponha que você tenha uma cópia do repo antiquada (sem a atualização do último commit feito). Para sincronizar 
+  esse repo local com \textit{upstream}, "puxe" as mudanças de lá para seu computador: 
+
+  \vspace{1ex}
+  \texttt{git pull}
+  \vspace{1ex}
+ 
+  %\subsubsection{Criando branches}
+
+  
+  %\section{Agradecimentos}	
+  	% OverLeaf
+	% StackOverflow
+	% ArchWiki e Wikipedia
+
+  \newpage
+  \section{Sobre o autor}
+
+  Olá! Meu nome é Omar Mesquita e tive a ideia de escrever esse livreto no momento em que tive que treinar um colega que entrou 
+  no grupo de pesquisa do qual faço parte na faculdade. Decidi torná-lo público porque conhecimento nunca é demais 
+  e pode ajudar alguém no futuro. 
+
+  Ao longo do texto, faço referências à comunidade \textit{open source}, então seria, no mínimo, esquisito caso esse livro não o fosse.
+  O código fonte está disponível no meu GitHub e é (até o momento) 100\% escrito em \LaTeX. Haverão sugestões, críticas, erros etc nesse livro, então, por favor, não hesite em destacá-los em seu \href{https://github.com/OmarMesqq/livro}{repositório}. 
+
+  
+  Trabalho como desenvolvedor web e de sistemas no Instituto de Física da Universidade Federal do Rio de Janeiro (UFRJ) e meus 
+  interesses são basicamente tudo - estou sempre querendo aprender algo, não importa o que. Contudo, ultimamente tenho estudado 
+  bastante sobre Matemática da Computação, DevOps e aplicações da computação à Engenharia Química.
+
+  \subsubsection{Contato}
+
+  \faIcon{linkedin} \hspace{1ex} \href{https://www.linkedin.com/in/omar-mesquita/}{Omar Mesquita}
+
+
+  \faIcon{github}	\hspace{1ex} \href{https://github.com/OmarMesqq}{OmarMesqq}
+  
+ 
+  \faIcon{envelope} \hspace{1ex} \href{mailto:omarmesquita@eq.ufrj.br}{omarmesquita@eq.ufrj.br}
+  
+\end{document}
