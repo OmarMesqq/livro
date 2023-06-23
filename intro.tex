@@ -359,10 +359,10 @@
 
 	Na seção final do livro, será discutido o \textbf{controle de versionamento} de código. Para esse propósito, iremos utilizar 
 	o software Git e uma plataforma de compartilhamento de código que o utilize - existem várias como GitLab, Gitea, Codeberg etc, mas
-	aqui iremos usar a mais popular, o GitHub. Assim, comece criando uma conta gratuita em algum desses serviços.
+	aqui iremos usar a mais popular, o \href{https://github.com/}{GitHub}. Assim, comece criando uma conta gratuita em algum desses serviços.
 
 	Feito isso, iremos instalar o Git em nosso sistema. Caso esteja usando Windows ou MacOS, o programa pode ser baixado 
-	em seu \href{https://git-scm.com/}{site oficial}. Em sistemas \textit{Unix-like}, como o Linux, é possível obte-lo por um 
+	pelo seu \href{https://git-scm.com/}{site oficial}. Em sistemas \textit{Unix-like}, como o Linux, é possível obte-lo por um 
 	gerenciador de pacotes. No Ubuntu Linux: 
 
 	\vspace{1ex}
@@ -374,7 +374,61 @@
 
 	\subsection{Conceitos importantes}
 
+	O Git é um software muito poderoso e para entendê-lo bem e utlizá-lo eficientemente, temos que aprender alguns conceitos 
+	próprios dele e outros típicos de desenvolvimento de software no geral. 
 
+	\subsubsection{O começo de tudo. O repositório}
+
+	Quando uma pessoa cria uma conta no GitHub, seu perfil apresenta zero repositórios (ou \textit{repos}) porque ela não fez upload de nenhum 
+	código. Pense nos repositórios como abas na sua conta que contém o \textit{código-fonte} do seu projeto. Por exemplo, 
+	você pode ter um repo para uma calculadora em Python, um para um sistema operacional em C e Rust e outro para um site em 
+	HTML, CSS e JavaScript. 
+
+	Os repos podem ser \textbf{públicos}, ou seja, qualquer pessoa (até mesmo sem conta no site) pode visualizar o seu código ou 
+	\textbf{privados}, nos quais apenas aquelas com conta e que você determinar poderão acessá-lo. 
+
+	Vamos começar, então, a criar seu primeiro repositório no GitHub: 
+	\begin{enumerate} 
+		\item{Vá ao site do GitHub: \texttt{https://github.com}}
+		\item{Procure um símbolo de $ + $ e clique neste}
+		\item{Clique em "Criar novo repositório"}
+	\end{enumerate}
+
+	Aqui, você deve fornecer um nome ao repo que criar. Ele vai estar do lado do seu nome de usuário e poderá ser acessado 
+	(caso seja público) diretamente da Internet pelo link genérico: 
+	
+	\vspace{1ex}
+	\texttt{https://github.com/seuNomeDeUsuario/nomeDoRepo}
+	\vspace{1ex}
+
+	Logo abaixo do nome você fornece uma descrição opcional e seleciona se o repo deve ser público ou não. 
+	Em seguida, certifique-se de que a caixa escrita \textit{"Adicionar um arquivo README"} esteja selecionada. 
+	
+	
+	O \texttt{README.md} é como um guia do seu repositório e é uma boa prática que ele seja o primeiro arquivo no seu repo. 
+	Independentemente de seu projeto ser público ou privado, esse arquivo deve ser bem escrito, explicitando as principais 
+	\textit{guidelines} do seu repositório, as quais incluem, mas não se limitam a: 
+
+	\begin{enumerate}
+		\item{O que é o projeto}
+		\item{Por que você criou esse projeto}
+		\item{Quais linguagens e/ou \textit{frameworks} foram utilizados}
+		\item{Contenha \textbf{documentação} ou, ao menos, direcione as pessoas a um arquivo/link que a contenha}
+	\end{enumerate}
+
+	Em seguida, na caixa escrita \textit{"Adicionar .gitignore"} deixa-a vazia. O \texttt{.gitignore} é um arquivo muito útil 
+	que será abordado em breve. Por enquanto, seu repo não necessita deste. 
+	
+	Finalmente, você deve escolher uma licença. Caso seu software seja de código fechado, essa escolha não é muito sensível.
+	Contudo, ao criar um repo público e, indiretamente, contribuir para a comunidade \textit{open source} é essencial que escolha 
+	uma.
+
+	A licença estabelece legalmente o que as pessoas podem fazer com seu programa e com seu código-fonte como copiá-lo, incorporá-lo,
+	distribuí-lo de forma gratuita ou cobrando, entre muitas outras situações. O assunto é extenso e importante, então caso queira 
+	aprender mais use o \href{site referenciado pelo GitHub}{https://choosealicense.com/} para melhor escolher uma.
+
+	No final da página, existe um botão verde escrito \textit{"Criar repositório"}. Clique nele. Parabéns, você criou seu primeiro 
+	repo no GitHub!
 \end{document}
 
 % Sobre o autor
