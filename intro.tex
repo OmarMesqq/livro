@@ -6,6 +6,8 @@
 \usepackage{graphicx}
 \usepackage{csquotes}
 \usepackage{caption}
+\usepackage{fontawesome5}
+
 
 \MakeOuterQuote{"}
 
@@ -425,10 +427,41 @@
 
 	A licença estabelece legalmente o que as pessoas podem fazer com seu programa e com seu código-fonte como copiá-lo, incorporá-lo,
 	distribuí-lo de forma gratuita ou cobrando, entre muitas outras situações. O assunto é extenso e importante, então caso queira 
-	aprender mais use o \href{https://choosealicense.com/}{site referenciado pelo GitHub} para melhor escolher uma.
+	aprender mais, consulte o \href{https://choosealicense.com/}{site referenciado pelo GitHub} para melhor escolher uma.
 
 	No final da página, existe um botão verde escrito \textit{"Criar repositório"}. Clique nele. Parabéns, você criou seu primeiro 
 	repo no GitHub!
+
+	\subsubsection{O multiverso. Os branches}
+
+	Com seu repositório criado, você pode ver que em sua página principal ao lado do símbolo \faIcon{code-branch}, está
+	escrito \texttt{main} e, ao lado desse texto, \textit{1 branch}. Quando o GitHub cria um repo para você, ele lhe designa 
+	apenas um \textit{branch}, o principal (ou \textit{main}, antigamente chamado de \textit{master}). 
+	
+	A palavra \textit{branch} traduz literalmente para "galho" e isso já te dá uma ideia de analogia para o desenvolvimento de 
+	software. Pense no ciclo de desenvolvimento de um app como uma árvore: o caule seria o "galho principal" (o \textit{main})
+	e as demais ramificações seriam branches com novas implementações.
+
+	Por exemplo, imaginando o projeto de uma calculadora em Python, o caule do seu projeto contém implementações que você sabe 
+	que não irão produzir erros para a pessoa usuária final como adição, subtração e multiplicação. Diz-se que \texttt{main} 
+	está sem erros (\textit{bug-free}).
+	
+	Suponha, porém, que você deseja colocar divisão em seu projeto, afinal, é uma operação bem típica. No entanto, sabe-se que dividir
+	qualquer número real por zero gera uma indeterminação. Isso pode criar uma \textbf{exceção} em seu programa e, se não for lidada, 
+	acarreta um erro ou \textit{bug}. Como você não quer erros no \textbf{ambiente de produção} (aquele das pessoas que utilizam o software final),
+	uma boa estratégia e criar um novo branch com a implementação de divisão. 
+
+	Isso lhe dá tempo para pensar em formas de lidar com a exceção da divisão por $ 0 $ ao mesmo tempo que mantém a \textit{codebase}
+	do seu projeto final intacta. Em outras palavras, você implementa algo novo no software, mas não quebra ele (de imediato).
+
+	\begin{figure}[ht!]
+		\centering
+	  \includegraphics[scale=0.3]{figs/software_tree.png} 
+		\caption*{Projeto de calculadora com visualização em árvore Git}
+  \end{figure}
+
+
+
 \end{document}
 
 % Sobre o autor
