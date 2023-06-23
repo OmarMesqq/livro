@@ -7,6 +7,7 @@
 \usepackage{csquotes}
 \usepackage{caption}
 \usepackage{fontawesome5}
+\usepackage{textcomp}
 \usepackage[usenames,dvipsnames]{color}
 
 
@@ -30,8 +31,9 @@
 	
 	\newpage
 	\tableofcontents
-	\newpage
 
+
+	\newpage
 	\section{Linux}
 	\subsection{Por que?}
 	
@@ -490,6 +492,7 @@
   visualizar e editar seus arquivos. 
 
   \subsubsection{Remoto-Local. O clone}
+  label{sec:clone}
 
   O comando \texttt{git clone} literalmente gera um clone de um repositório do \textit{upstream} para o local. Para começar, faça:
   
@@ -529,7 +532,7 @@
 
   \subsubsection{Tudo certo? O status}
 
-  Até agora, seu projeto possui apenas o \texttt{README.md}, então vá em frente e o edite. Adicione seu nome, um nome legal ou 
+  Até agora, seu projeto possui apenas o \texttt{README.md}, então vá em frente e o edite. Adicione seu nome, escreva uma piada ou 
   qualquer coisa. Depois de salvar o arquivo e voltar para o terminal, digite: 
 
   \vspace{1ex}
@@ -539,22 +542,25 @@
   o que irá retornar algo como: 
 
   \vspace{1ex}
-  \texttt{On branch main\\
-  ...\\
-  ...\\
-  ...\\
-  ...\\
-  Changes not staged for commit:\\
-  ......\\
-  ......\\
-  \textcolor{red}{modified:   README.md}}
+  \texttt{\\
+  \noindent On branch main\\
+  \noindent ...\\
+  \noindent ...\\
+  \noindent ...\\
+  \noindent ...\\
+  \noindent Changes not staged for commit:\\
+  \noindent ......\\
+  \noindent ......\\
+  \noindent \textcolor{red}{modified:   README.md}}
   \vspace{1ex}
+
 
   E, de fato, o arquivo README foi modificado. Esse comando serve mais para que possa entender o que foi mudado, se realmente foi 
   mudado e se os arquivos que você quer intactos realmente estão. Depois dessa confirmação, nos preparamos para mandar nossas
   mudanças para \textit{upstream}. 
   
   \subsubsection{Fazendo as malas. O add}
+  \label{sec:add}
 
   Para preparar o envio de arquivos novos ou modificados para remoto, fazemos: 
   
@@ -562,14 +568,14 @@
   \texttt{git add arquivo1 pasta1 arquivo2 pasta2}
   \vspace{1ex}
   
-  Apesar disso, o que geralmente se faz é adicionar a própria pasta \textbf{raiz} do repositório (aquela criado pelo \texttt{git clone})
+  Apesar desse método ser válido, o que geralmente se faz é adicionar a própria pasta \textbf{raiz} do repositório (aquela criado pelo \texttt{git clone})
   com todos os arquivos e pastas recursivamente. Para tanto, escrevemos: 
 
   \vspace{1ex}
   \texttt{git add .}
   \vspace{1ex}
 
-  Para projetos maiores isso gera problemas pois estes geram pastas e arquivos temporários de cache, auxiliares etc. Numa próxima
+  Para projetos maiores isso pode ser problemático, pois estes geram pastas e arquivos temporários de cache, auxiliares etc. Numa próxima
   seção, veremos como ignorar esses arquivos com o arquivo \texttt{.gitignore}. Agora, porém, isso não é um problema. 
   Vamos seguir. 
 
@@ -581,10 +587,10 @@
 
   O que você fez anteriormente foi clonar o repositório de remoto para local, editou um arquivo, 
   o colocou na "fila para saída/mudança" e, agora, você oficializa esse "feito" no repositório fazendo um commit ou,
-  de forma mais "legal", \textit{commitando}. Faça: 
+  de forma mais legal, \textit{commitando}. Faça: 
 
   \vspace{1ex}
-  \texttt{git commit -m "Editei o README. Escrevi meu nome"}
+  \texttt{git commit -m \textquotesingle\!\textquotesingle editei o README. Escrevi meu nome\textquotesingle\!\textquotesingle}
   \vspace{1ex}
 
   Note a flag de mensagem \texttt{-m} que passei para o comando. À medida que as pessoas se tornam desenvolvedores mais experientes, 
@@ -614,7 +620,7 @@
 
   \begin{enumerate}
 	\item{\texttt{-u}: essa flag significa \textit{set upstream},ou seja, você está alterando o servidor remoto com suas mudanças}
-	\item{\texttt{origin}: esse modificador indice que o \textit{upstream} é o próprio repositório trazido pelo \texttt{git clone}}
+	\item{\texttt{origin}: esse modificador indica que o \textit{upstream} é o próprio repositório trazido pelo \texttt{git clone}}
 	\item{\texttt{main}: esse argumento especifica o branch para o qual as mudanças estão sendo feitas}
   \end{enumerate}
 
@@ -622,6 +628,72 @@
   mensagem clara e sincronizou o remoto com as mudanças locais!  
 
 
+  O passo a passo anterior deve cobrir as operações essenciais para você escrever código e mandar para o servidor do seu grupo 
+  de pesquisa, empresa etc. O git, assim como a CLI no Linux, possui vários comandos e funcionalidades avançadas como o \texttt{merge}.
+  Mas, esse livro é nada mais que uma introdução. Caso queira ler mais sobre o assunto, vou deixar algumas referências. 
+  Agora, vou tratar de algumas peculiaridades do Git que foram úteis na minha vida como desenvolvedor. Elas vão desde mais simples a 
+  mais elaboradas. 
+
+  \subsubsection{Ignorando arquivos. O .gitignore}
+
+  Esse arquivo já foi muito falado nesse livreto e chegou a hora de analisá-lo a fundo. Ele, assim como a pasta \texttt{.git} 
+  é padrão do Git e são colocados na pasta do seu repo quando você o cria ou o clona. Tome o exemplo da 
+  seção \href{sec:clone}{seção 3.2.1} e entre em seu diretório. Caso rode \texttt{ls}, deverá ver seu único arquivo, 
+  \texttt{README.md}, mas existem arquivos "invisíveis". 
+  
+  Passe a flag \texttt{-A} para o \texttt{ls}, a qual lista \textbf{todos} os arquivos e diretórios presentes numa pasta. 
+  Agora a pasta \texttt{.git} está visível. Os motivos de existirem arquivos invisíveis em seu sistema são várias e algumas delas são:
+  
+  \begin{itemize}
+	\item{São gerados em massa}
+	\item{São arquivos temporários}
+	\item{Ocupam pouco espaço}
+	\item{São removidos imediatamente após sua criação}
+	\item{Não foram feitos para serem editados por pessoas não técnicas}
+  \end{itemize}
+
+  e, por isso, caso fossem visíveis, tornariam suas pastas muito confusas. Não se iluda, esse tipo de arquivo também existe no 
+  Windows e no MacOS, só são mais difíceis de visualizar nesses SOs. 
+  
+  Dito isso, sinta-se à vontade para explorar o que há dentro da \texttt{.git}, mas nosso foco está no arquivo que iremos criar
+  agora.
+
+  \vspace{1ex}
+  \texttt{touch .gitignore}
+  \vspace{1ex}
+
+  Criado o arquivo, podemos modificá-lo com um editor de terminal:  
+
+  \vspace{1ex}
+  \texttt{vim .gitignore}
+  \vspace{1ex}
+
+  A sintaxe do \texttt{.gitignore} é bem fácil. A cada linha você escreve o nome do arquivo ou pasta que deve 
+  ser ignorado durante o \href{sec:add}{\texttt{git add}}. Um exemplo seria a criação de um aplicativo em 
+  Python, o qual gera uma pasta de cache chamada \texttt{\_\_pycache\_\_}. Para não fazer upload de dados inúteis e que 
+  irão onerar seu servidor, vale a pena retirá-los do ambiente de desenvolvimento. Nosso \texttt{.gitignore} seria algo assim: 
+
+  \vspace{1ex}
+  \texttt{\_\_pycache\_\_/}
+  \vspace{1ex}
+
+  e é isso. Para melhor ilustrar, vejamos um exemplo mais robusto: 
+  
+  \vspace{1ex}
+  \texttt{\\ 
+  \noindent webapp/\_\_pycache\_\_/  \\ 
+  \noindent notas \\ 
+  \noindent testes/teste0.log}
+  \vspace{1ex}
+
+  Aqui, ignoramos a pasta cache do Python dentro da pasta \texttt{webapp}, o arquivo de texto \texttt{notas} e o arquivo 
+  de log \texttt{teste0.log} dentro da pasta \texttt{log}. Tudo que está escrito no \texttt{.gitignore} e está na raiz 
+  do repositório não será adicionado para mudanças remotas com o \texttt{git add}.
+  
+  
 \end{document}
 
 % Sobre o autor
+% OverLeaf
+% StackOverflow
+% ArchWiki e Wikipedia
