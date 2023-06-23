@@ -7,6 +7,7 @@
 \usepackage{csquotes}
 \usepackage{caption}
 \usepackage{fontawesome5}
+\usepackage[usenames,dvipsnames]{color}
 
 
 \MakeOuterQuote{"}
@@ -433,6 +434,7 @@
 	repo no GitHub!
 
 	\subsubsection{O multiverso. Os branches}
+	label{sec:branches}
 
 	Com seu repositório criado, você pode ver que em sua página principal ao lado do símbolo \faIcon{code-branch}, está
 	escrito \texttt{main} e, ao lado desse texto, \textit{1 branch}. Quando o GitHub cria um repo para você, ele lhe designa 
@@ -449,17 +451,175 @@
 	Suponha, porém, que você deseja colocar divisão em seu projeto, afinal, é uma operação bem típica. No entanto, sabe-se que dividir
 	qualquer número real por zero gera uma indeterminação. Isso pode criar uma \textbf{exceção} em seu programa e, se não for lidada, 
 	acarreta um erro ou \textit{bug}. Como você não quer erros no \textbf{ambiente de produção} (aquele das pessoas que utilizam o software final),
-	uma boa estratégia e criar um novo branch com a implementação de divisão. 
+	uma boa estratégia é criar um novo branch com a implementação de divisão. 
 
-	Isso lhe dá tempo para pensar em formas de lidar com a exceção da divisão por $ 0 $ ao mesmo tempo que mantém a \textit{codebase}
+	Isso lhe dá tempo para pensar em formas de lidar com a exceção da divisão por 0 ao mesmo tempo que mantém a \textit{codebase}
 	do seu projeto final intacta. Em outras palavras, você implementa algo novo no software, mas não quebra ele (de imediato).
 
 	\begin{figure}[ht!]
 		\centering
-	  \includegraphics[scale=0.3]{figs/software_tree.png} 
+	  	\includegraphics[scale=0.3]{figs/software_tree.png} 
 		\caption*{Projeto de calculadora com visualização em árvore Git}
   \end{figure}
 
+  \subsubsection{Apêndice: paridade do desenvolvimento}
+
+  A natureza do Git é permitir um fluxo de trabalho simples para escrever e, posteriormente, testar e mandar seu projeto para
+  produção. Seja trabalhando como indivíduo ou em equipe, não se espera que você faça tudo em sua máquina - você vai querer
+  mandar suas atualizações para um ambiente seguro, que possa ser acessado de qualquer lugar e, caso tenha um time, seja 
+  compartilhado. Por isso, vou introduzir aqui dois conceitos simples para que possamos entender melhor as operações que 
+  faremos em branches. 
+
+  \paragraph{Local}
+  \paragraph{}
+
+  É o computador no qual você trabalha e instalou o Git no começo dessa seção. Esse pode ser seu aparelho pessoal ou 
+  de trabalho, mas o mais importante é que você fará alterações aqui que serão enviadas para um servidor com seu código.
+
+  \paragraph{Remoto}
+  \paragraph{}
+
+  Também chamado de \textit{upstream}, esse servidor pode estar na sua rede local (LAN) - o que é mais complicado de fazer e não será abordado aqui - ou na
+  Internet (WAN). Um exemplo desse último caso é o GitHub, o qual usamos até aqui e para projetos simples é gratuito, sendo 
+  mantido pela Microsoft. 
+
+  \subsection{Operações com Git}
+
+  Com esses conceitos consolidados, podemos começar a fazer operações para manter e controlar as versões do nosso código.
+  Vamos começar, partindo do exemplo da \href{sec:branches}{seção 3.1.2}, trazendo o repositório criado do remoto para local para que você possa
+  visualizar e editar seus arquivos. 
+
+  \subsubsection{Remoto-Local. O clone}
+
+  O comando \texttt{git clone} literalmente gera um clone de um repositório do \textit{upstream} para o local. Para começar, faça:
+  
+  \vspace{1ex}
+  \texttt{git clone https://github.com/seuNomeDeUsuario/nomeDoRepo}
+  \vspace{1ex}
+  
+  Note que esse comando irá copiar os arquivos do remoto em uma pasta chamada \texttt{nomeDoRepo} que, por sua vez, está na pasta
+  em que você está trabalhando. Caso o diretório não existe, ele será criado. Para clonar um repositório para um local arbitrário: 
+
+  \vspace{1ex}
+  \texttt{git clone https://github.com/seuNomeDeUsuario/nomeDoRepo /path/para/o/local/desejado}
+  \vspace{1ex}
+
+  Nesse momento, os arquivos do remoto estão em seu PC. Para visualizá-los, faça \texttt{cd} na pasta. Repare que o seu terminal 
+  antes estava mais ou menos assim:
+
+  \vspace{1ex}
+  \texttt{user@linux: ~}
+  \vspace{1ex}
+
+  E agora: 
+
+  \vspace{1ex}
+  \texttt{user@linux (main): ~}
+  \vspace{1ex}
+
+  Repare no parênteses. Ele indica o \textbf{branch} no qual você está trabalhando. Como seu repositório tem apenas o principal e o 
+  comando \texttt{git clone} segue o padrão de \texttt{main}, esse branch foi clonado. Caso quisesse clonar outro branch, bastava
+  passar a flag \texttt{-b} para o comando: 
+
+  \vspace{1ex}
+  \texttt{git clone https://github.com/seuNomeDeUsuario/nomeDoRepo pastaQualquer -b umBranchQualquer}
+  \vspace{1ex}
+
+  Mas como seu repositório possui apenas \textit{main}, o comando irá falhar. Em breve, veremos como criar branches a partir da CLI.
+
+  \subsubsection{Tudo certo? O status}
+
+  Até agora, seu projeto possui apenas o \texttt{README.md}, então vá em frente e o edite. Adicione seu nome, um nome legal ou 
+  qualquer coisa. Depois de salvar o arquivo e voltar para o terminal, digite: 
+
+  \vspace{1ex}
+  \texttt{git status}
+  \vspace{1ex}
+
+  o que irá retornar algo como: 
+
+  \vspace{1ex}
+  \texttt{On branch main\\
+  ...\\
+  ...\\
+  ...\\
+  ...\\
+  Changes not staged for commit:\\
+  ......\\
+  ......\\
+  \textcolor{red}{modified:   README.md}}
+  \vspace{1ex}
+
+  E, de fato, o arquivo README foi modificado. Esse comando serve mais para que possa entender o que foi mudado, se realmente foi 
+  mudado e se os arquivos que você quer intactos realmente estão. Depois dessa confirmação, nos preparamos para mandar nossas
+  mudanças para \textit{upstream}. 
+  
+  \subsubsection{Fazendo as malas. O add}
+
+  Para preparar o envio de arquivos novos ou modificados para remoto, fazemos: 
+  
+  \vspace{1ex}
+  \texttt{git add arquivo1 pasta1 arquivo2 pasta2}
+  \vspace{1ex}
+  
+  Apesar disso, o que geralmente se faz é adicionar a própria pasta \textbf{raiz} do repositório (aquela criado pelo \texttt{git clone})
+  com todos os arquivos e pastas recursivamente. Para tanto, escrevemos: 
+
+  \vspace{1ex}
+  \texttt{git add .}
+  \vspace{1ex}
+
+  Para projetos maiores isso gera problemas pois estes geram pastas e arquivos temporários de cache, auxiliares etc. Numa próxima
+  seção, veremos como ignorar esses arquivos com o arquivo \texttt{.gitignore}. Agora, porém, isso não é um problema. 
+  Vamos seguir. 
+
+  \subsubsection{Oficializando a saída. O commit}
+
+  O conceito de \textbf{commit} é extremamente importante para controle de versionamento (VCS) e, em particular, para o Git. 
+  A grosso modo, quanto mais commits um repositório tem, mais ativo ele é, ou seja, muitas mudanças são feitas para a \textit{codebase}
+  e/ou para a documentação do projeto.
+
+  O que você fez anteriormente foi clonar o repositório de remoto para local, editou um arquivo, 
+  o colocou na "fila para saída/mudança" e, agora, você oficializa esse "feito" no repositório fazendo um commit ou,
+  de forma mais "legal", \textit{commitando}. Faça: 
+
+  \vspace{1ex}
+  \texttt{git commit -m "Editei o README. Escrevi meu nome"}
+  \vspace{1ex}
+
+  Note a flag de mensagem \texttt{-m} que passei para o comando. À medida que as pessoas se tornam desenvolvedores mais experientes, 
+  é comum que abandonem o hábito de commitar com mensagens. Tente evitar isso. É uma excelente prática demonstrar o que você está 
+  mudando em um repositório. Isso ajuda as pessoas desenvolvedoras que trabalham com você, as pessoas que visualizam o código por foram
+  de sua organização/empresa, as que vierem depois de você e, não ironicamente, você no futuro. 
+
+  \subsubsection{Saindo. O push}
+
+  Caso esteja se perguntando porque o \texttt{git commit} não é a etapa final para mudar algo no remoto, a resposta é que 
+  \textit{"é por design"}. Por ora, vamos assumir que os commits são armazenados num registro, ou \textit{log}, do seu repositório. 
+  Quando você editou \texttt{README.md}, algo foi mudado e o \texttt{git status} acusou isso. Contudo, não era "oficial" para o 
+  sistema do Git. 
+  
+  Uma filosofia comum em desenvolvimento de software é a transparência e o registro histórico das mudanças. Os commits entram
+  para fazer jus a isso. No momento em que digitou Enter no comando \texttt{git commit}, o seu repositório de fato foi alterado. 
+  Agora, porém, seu repositório local está à frente do repositório remoto, uma vez que o primeiro possui um commit a mais. 
+
+  Como consertar isso? Bem, vamos atualizar o remoto com as alterações do local. Para tanto, "empurramos" as mudanças locais 
+  para o \textit{upstream}, isto é, fazemos um \textbf{push}.
+
+  \vspace{1ex}
+  \texttt{git push -u origin main}
+  \vspace{1ex}
+
+  Nota-se que o comando \texttt{git push} recebeu uma flag com um modificador e um argumento. Vejamos um por um: 
+
+  \begin{enumerate}
+	\item{\texttt{-u}: essa flag significa \textit{set upstream},ou seja, você está alterando o servidor remoto com suas mudanças}
+	\item{\texttt{origin}: esse modificador indice que o \textit{upstream} é o próprio repositório trazido pelo \texttt{git clone}}
+	\item{\texttt{main}: esse argumento especifica o branch para o qual as mudanças estão sendo feitas}
+  \end{enumerate}
+
+  Parabéns! Você baixou um repositório de um servidor remoto, fez as mudanças necessárias no seu computador, registrou-as com uma
+  mensagem clara e sincronizou o remoto com as mudanças locais!  
 
 
 \end{document}
