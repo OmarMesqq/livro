@@ -1,5 +1,4 @@
 \documentclass{article}
-
 \usepackage[brazilian]{babel}
 \usepackage{indentfirst}
 \usepackage{hyperref}
@@ -10,16 +9,13 @@
 \usepackage{textcomp}
 \usepackage[usenames,dvipsnames]{color}
 
-
 \MakeOuterQuote{"}
-
 \hypersetup{
 	colorlinks=true,
 	filecolor=black,
 	linkcolor=black,
 	urlcolor=cyan
 }
-
 \pagestyle{empty}
 
 \begin{document}
@@ -32,7 +28,6 @@
 	
 	\newpage
 	\tableofcontents
-
 
 	\newpage
 	\section{Linux}
@@ -67,12 +62,12 @@
 
 	\begin{figure}[ht!]
   		\centering
-		\includegraphics[scale=0.3]{figs/dk.jpeg} 
+		\includegraphics[scale=0.2]{figs/dk.jpeg} 
   		\caption*{O efeito Dunning Kruger. Não deixe que o primeiro pico te desmotive!}
 	\end{figure}
 
 	\newpage
-	Falando de comandos agora - vamos começar com os básicos, isto é, aqueles que você usa todo dia só que de forma gráfica
+	Falando de comandos agora --- vamos começar com os básicos, isto é, aqueles que você usa todo dia só que de forma gráfica
 	em programas como o Explorador do Windows. Tomando o Ubuntu Linux como referência, começamos nossa jornada no mundo CLI
 	procurando um aplicativo chamado \textbf{Terminal}. Ao clicar nele, você irá se deparar com algo assim: 
 	
@@ -82,7 +77,7 @@
 
 	O que significa que a pessoa usuária de nome \texttt{user} está, ou "at" em inglês, (\texttt{@}) no computador de nome
 	\texttt{linux}. Depois dos dois pontos, irão aparecer os comandos que você digitar. Tais comandos serão interpretados pela
-	\textit{shell} - um programa que roda "por trás das cortinas" e analisa os comandos para saber se são válidos ou não.
+	\textit{shell} --- um programa que roda "por trás das cortinas" e analisa os comandos para saber se são válidos ou não.
 
 	Dado esse contexto, podemos começar a usar o computador com o poder da CLI. Geralmente, a primeira coisa que se faz ao 
 	entrar no computador é saber onde você está. 
@@ -98,8 +93,8 @@
 
 	\subsubsection{O que eu tenho? O ls} 
 
-	Agora que você sabe onde está, como descobrir o que tem em cada pasta? Para isso, use o comando \texttt{ls}. Isso deve
-	retornar a \textit{lista} de arquivos e pastas que estão dentro do diretório no qual está trabalhando. Por exemplo, em um sistema
+	Agora que você sabe onde está, como descobrir o que tem em cada pasta? Para isso, use o comando \texttt{ls}. Isso 
+	retorna a \textit{lista} de arquivos e pastas que estão dentro do diretório no qual está trabalhando. Por exemplo, em um sistema
 	de uso pessoal, é esperado que \texttt{/home/user} tenha pastas como \texttt{Videos, Downloads, Imagens, Musica}, entre
 	outras. 
 	
@@ -123,7 +118,7 @@
 
 	Aqui, trataremos de comandos que fazem \textit{writes}, ou "escritas", e, portanto, entram e saiem com \textit{bytes} em disco. 
 
-	\paragraph{Criação de arquivo:} 
+	\paragraph{Criação de arquivo} 
 	\paragraph{}
 	Para gerar um arquivo de tipo qualquer, use o \texttt{touch}: 
 	
@@ -134,7 +129,7 @@
 		\item{Arquivo qualquer: \texttt{touch arquivoGenerico}}
 	\end{enumerate}
 
-	\paragraph{Copiando arquivos:} 
+	\paragraph{Copiando arquivos} 
 	\paragraph{} 
 	O comando \texttt{cp} permite que você copie arquivos de um lugar para outro. Vejamos seu uso: 
 	\begin{enumerate} 
@@ -160,7 +155,7 @@
 	\paragraph{}
 
 	Mover arquivos funciona de forma análoga ao \texttt{cp}, com uma diferença significativa sendo que não é necessário 
-	especificar a \textit{flag} \texttt{-R} para mover pastas - basta usar o comando como se fossem arquivos ordinários. 
+	especificar a \textit{flag} \texttt{-R} para mover pastas --- basta usar o comando como se fossem arquivos ordinários. 
 
 	\begin{enumerate} 
 		\item{\texttt{mv Documentos DocumentosSecretos}} 
@@ -217,8 +212,26 @@
 	\vspace{1ex}
 	\texttt{rm: remove regular file?} 
 	\vspace{1ex} 
-	
+
 	Para o qual você digita \texttt{y} ou \texttt{n} para sim ou não, respectivamente. 
+
+	\paragraph{Criação de diretório} 
+	\paragraph{}
+
+	Para criar uma pasta você "faz um diretório" ou \textit{make directory} em inglês. Para facilitar nossas vidas, esse 
+	comando pode ser acessado digitando \texttt{mkdir} no Terminal. Seu único argumento obrigatório é o nome desejado para a nova pasta:
+
+	\begin{enumerate}
+	 	\item{\texttt{mkdir scriptsPython}}
+	 	\item{\texttt{mkdir -p cmake\_proj/include}}
+	\end{enumerate}
+
+	O comando (2) introduz uma nova flag (\texttt{-p}) que indica que os "diretórios-pai" ou \textit{parents} sejam criados. 
+	Esse comando é muito útil para criação de pastas para projetos grandes, uma vez que não é necessário uma série de \texttt{mkdir}
+	para criar pastas dentro de pastas, também chamadas de \textit{nested folders}.
+
+	Assim, nesse exemplo, a pasta \texttt{cmake\_proj} não existe e, muito menos, a \texttt{include}, já que está contida na primeira. 
+	Porém, ao executá-lo, criamos ambas na ordem especificada.
 
 	\subsection{Visualizando arquivos. O cat} 
 
@@ -268,18 +281,17 @@
 	programas de edição de texto CLI que existem. Fiz referência a ele devido à sua fácil utilização, mas existem
 	outras opções mais configuráveis como o \texttt{emacs}, o \texttt{vim} (meu preferido) e o \texttt{micro}. 
 
-	\newpage
 
 	\section{Python} 
 
 	Nessa seção iremos iniciar a tratar do assunto \textbf{programação de computadores}. No contexto desse livreto, 
-	irei defini-la como escrever \textit{scripts}, traduzindo literalmente como "roteiros", que instruem o computador a fazer
-	determinada(s) ação(ões). Como estamos em um nível iniciante, a melhor linguagem de programação para essa tarefa 
+	irei defini-la como "escrever \textit{scripts}, traduzido literalmente para "roteiros", que instruem o computador a fazer
+	determinada(s) ação(ões)". Como estamos em um nível iniciante, a melhor linguagem de programação para essa tarefa 
 	é o Python. 
 
 	\subsection{Contexto técnico} 
 
-	A linguagem Python é \textit{interpretada}, o que significa que o código escrito por você \textbf{não} é "empacotado" e
+	A linguagem Python é \textit{interpretada}, o que significa que o código escrito \textbf{não} é "empacotado" e
 	convertido em binário (0s e 1s que o computador lê em nível fundamental) como ocorre em linguagens \textit{compiladas}. 
 	Isso gera um certo \textit{overhead} ("atraso") de performance para o programa ao mesmo tempo que proporciona grande 
 	flexibilidade à linguagem. Sua natureza flexível, com o uso de \textbf{módulos}, é um dos pontos que fizeram Python 
@@ -364,7 +376,7 @@
 	\section{Git} 
 
 	Na seção final do livro, será discutido o \textbf{controle de versionamento} de código. Para esse propósito, iremos utilizar 
-	o software Git e uma plataforma de compartilhamento de código que o utilize - existem várias como GitLab, Gitea, Codeberg etc, mas
+	o software Git e uma plataforma de compartilhamento de código que o utilize --- existem várias como GitLab, Gitea, Codeberg etc, mas
 	aqui iremos usar a mais popular, o \href{https://github.com/}{GitHub}. Assim, comece criando uma conta gratuita em algum desses serviços.
 
 	Feito isso, iremos instalar o Git em nosso sistema. Caso esteja usando Windows ou MacOS, o programa pode ser baixado 
@@ -415,7 +427,7 @@
 	(caso seja público) diretamente da Internet pelo link genérico: 
 	
 	\vspace{1ex}
-	\texttt{https://github.com/seuNomeDeUsuario/nomeDoRepo}
+	\texttt{https://github.com/NomeDeUsuario/NomeDoRepo}
 	\vspace{1ex}
 
 	Logo abaixo do nome você fornece uma descrição opcional e seleciona se o repo deve ser público ou não. 
@@ -448,7 +460,7 @@
 	repo no GitHub!
 
 	\subsubsection{O multiverso. Os branches}
-	label{sec:branches}
+	\label{sec:branches}
 
 	Com seu repositório criado, você pode ver que em sua página principal ao lado do símbolo \faIcon{code-branch}, está
 	escrito \texttt{main} e, ao lado desse texto, \textit{1 branch}. Quando o GitHub cria um repo para você, ele lhe designa 
@@ -461,6 +473,12 @@
 	Por exemplo, imaginando o projeto de uma calculadora em Python, o caule do seu projeto contém implementações que você sabe 
 	que não irão produzir erros para a pessoa usuária final como adição, subtração e multiplicação. Diz-se que \texttt{main} 
 	está sem erros (\textit{bug-free}).
+
+	\begin{figure}[ht!]
+		\centering
+	  	\includegraphics[scale=0.25]{figs/software_tree.png} 
+		\caption*{Projeto de calculadora com visualização em árvore Git}
+  	\end{figure}
 	
 	Suponha, porém, que você deseja colocar divisão em seu projeto, afinal, é uma operação bem típica. No entanto, sabe-se que dividir
 	qualquer número real por zero gera uma indeterminação. Isso pode criar uma \textbf{exceção} em seu programa e, se não for lidada, 
@@ -470,20 +488,16 @@
 	Isso lhe dá tempo para pensar em formas de lidar com a exceção da divisão por 0 ao mesmo tempo que mantém a \textit{codebase}
 	do seu projeto final intacta. Em outras palavras, você implementa algo novo no software, mas não quebra ele (de imediato).
 
-	\begin{figure}[ht!]
-		\centering
-	  	\includegraphics[scale=0.3]{figs/software_tree.png} 
-		\caption*{Projeto de calculadora com visualização em árvore Git}
-  	\end{figure}
 
   \subsubsection{Apêndice: paridade do desenvolvimento}
-
+  
   A natureza do Git é permitir um fluxo de trabalho simples para escrever e, posteriormente, testar e mandar seu projeto para
-  produção. Seja trabalhando como indivíduo ou em equipe, não se espera que você faça tudo em sua máquina - você vai querer
+  produção. Seja trabalhando como indivíduo ou em equipe, não se espera que você faça tudo em sua máquina --- você vai querer
   mandar suas atualizações para um ambiente seguro, que possa ser acessado de qualquer lugar e, caso tenha um time, seja 
   compartilhado. Por isso, vou introduzir aqui dois conceitos simples para que possamos entender melhor as operações que 
   faremos em branches. 
-
+  
+  \vspace{5ex}
   \paragraph{Local}
   \paragraph{}
 
@@ -493,7 +507,7 @@
   \paragraph{Remoto}
   \paragraph{}
 
-  Também chamado de \textit{upstream}, esse servidor pode estar na sua rede local (LAN) - o que é mais complicado de fazer e não será abordado aqui - ou na
+  Também chamado de \textit{upstream}, esse servidor pode estar na sua rede local (LAN) --- o que é mais complicado de fazer e não será abordado aqui --- ou na
   Internet (WAN). Um exemplo desse último caso é o GitHub, o qual usamos até aqui e para projetos simples é gratuito, sendo 
   mantido pela Microsoft. 
 
@@ -503,20 +517,20 @@
   Vamos começar, partindo do exemplo da \href{sec:branches}{seção 3.1.2}, trazendo o repositório criado do remoto para local para que você possa
   visualizar e editar seus arquivos. 
 
-  \subsubsection{Remoto-Local. O clone}
-  label{sec:clone}
+  \subsubsection{Chegando em casa. O clone}
+  \label{sec:clone}
 
   O comando \texttt{git clone} literalmente gera um clone de um repositório do \textit{upstream} para o local. Para começar, faça:
   
   \vspace{1ex}
-  \texttt{git clone https://github.com/seuNomeDeUsuario/nomeDoRepo}
+  \texttt{git clone https://github.com/NomeDeUsuario/NomeDoRepo}
   \vspace{1ex}
   
   Note que esse comando irá copiar os arquivos do remoto em uma pasta chamada \texttt{nomeDoRepo} que, por sua vez, está na pasta
   em que você está trabalhando. Caso o diretório não existe, ele será criado. Para clonar um repositório para um local arbitrário: 
 
   \vspace{1ex}
-  \texttt{git clone https://github.com/seuNomeDeUsuario/nomeDoRepo /path/para/o/local/desejado}
+  \texttt{git clone https://github.com/NomeDeUsuario/NomeDoRepo /pasta/qualquer}
   \vspace{1ex}
 
   Nesse momento, os arquivos do remoto estão em seu PC. Para visualizá-los, faça \texttt{cd} na pasta. Repare que o seu terminal 
@@ -537,7 +551,7 @@
   passar a flag \texttt{-b} para o comando: 
 
   \vspace{1ex}
-  \texttt{git clone https://github.com/seuNomeDeUsuario/nomeDoRepo pastaQualquer -b umBranchQualquer}
+  \texttt{git clone https://github.com/NomeDeUsuario/NomeDoRepo pastaQualquer -b BranchQualquer}
   \vspace{1ex}
 
   Mas como seu repositório possui apenas \textit{main}, o comando irá falhar. Em breve, veremos como criar branches a partir da CLI.
@@ -613,14 +627,14 @@
   \subsubsection{Saindo. O push}
   \label{sec:push}
 
-  Caso esteja se perguntando porque o \texttt{git commit} não é a etapa final para mudar algo no remoto, a resposta é que 
-  \textit{"é por design"}. Por ora, vamos assumir que os commits são armazenados num registro, ou \textit{log}, do seu repositório. 
+  Caso esteja se perguntando porque o \texttt{git commit} não é a etapa final para mudar o projeto no remoto, a resposta é que 
+  \textit{"é por design"}. Os commits são armazenados num registro, ou \textit{log}, do seu repositório --- para acessá-lo, basta fazer \texttt{git log} em seu terminal.
   Quando você editou \texttt{README.md}, algo foi mudado e o \texttt{git status} acusou isso. Contudo, não era "oficial" para o 
-  sistema do Git. 
+  sistema do Git, isto é, a mudança não tinha sido commitada. 
   
   Uma filosofia comum em desenvolvimento de software é a transparência e o registro histórico das mudanças. Os commits entram
-  para fazer jus a isso. No momento em que digitou Enter no comando \texttt{git commit}, o seu repositório de fato foi alterado. 
-  Agora, porém, seu repositório local está à frente do repositório remoto, uma vez que o primeiro possui um commit a mais. 
+  para fazer jus a isso. No momento em que digitou Enter no comando \texttt{git commit}, o seu repositório \textbf{de fato} foi alterado. 
+  Dessa forma, seu repositório local está à frente do repositório remoto, uma vez que o primeiro possui um commit a mais. 
 
   Como consertar isso? Bem, vamos atualizar o remoto com as alterações do local. Para tanto, "empurramos" as mudanças locais 
   para o \textit{upstream}, isto é, fazemos um \textbf{push}.
@@ -702,7 +716,7 @@
 
   Aqui, ignoramos a pasta cache do Python dentro da pasta \texttt{webapp}, o arquivo de texto \texttt{notas} e o arquivo 
   de log \texttt{teste0.log} dentro da pasta \texttt{log}. Tudo que está escrito no \texttt{.gitignore} e está na raiz 
-  do repositório não será adicionado para mudanças remotas com o \texttt{git add}.
+  do repositório \textbf{não} será adicionado para mudanças remotas com o \texttt{git add}.
   
   
   \subsubsection{Voltando. O pull}
@@ -715,13 +729,65 @@
   \texttt{git pull}
   \vspace{1ex}
  
-  \subsubsection{Criando branches}
+  \subsubsection{Explorando o multiverso. O git branch}
 
+  Até agora, vimos operações essenciais do Git atuando em um branch, especificamente \texttt{main}. Mas e se você quiser 
+  implementar uma nova funcionalidade usando o que vimos em \href{sec:branches}{3.1.2}? Vamos acrescentar um galho em nossa 
+  árvore de software, usando o \texttt{git branch}. 
   
-  %\section{Agradecimentos}	
-  	% OverLeaf
-	% StackOverflow
-	% ArchWiki e Wikipedia
+  Assim como em uma árvore real, branches em um repositório "nascem" a partir de um galho já existente. Na terminologia Git, 
+  esse último é chamado de \textit{base branch}. Dito isso, um branch pode ser criado tendo um anterior como base (em um cenário 
+  no qual o branch filho herda todos os arquivos do branch base) \textbf{ou} pode ser órfão --- situação na qual o novo branch 
+  começa do zero, sem arquivos e sem histórico de commits. 
+
+  \paragraph{Criação com base branch}
+  \paragraph{}
+
+  Navegue para a pasta raiz do seu repositório clonado e cheque se está no branch que deseja utilizar como base. Tomando nosso 
+  exemplo anterior, teremos apenas \texttt{main}, então certifique-se de que está nele: 
+
+  \vspace{1ex}
+  \texttt{git checkout main}
+  \vspace{1ex}
+
+  Se estiver tudo certo, você verá algo assim: 
+
+
+  \texttt{\\ \noindent Already on \textquotesingle\!main\textquotesingle\! \\ \noindent Your branch is up to date with \textquotesingle\!origin/main\textquotesingle\!.}
+
+  Então dê um nome interessante para o novo "galho" de seu projeto. Se pensarmos na nossa calculadora em Python, vamos
+  implementar a função $ log(x) $ em um branch separado. 
+
+  \vspace{1ex}
+  \texttt{git branch logx}
+  \vspace{1ex}
+
+  Agora, seu repositório apresenta dois branches: \texttt{main} e \texttt{logx}, o qual herda de \texttt{main}. 
+  Por fim, vamos mudar para o novo branch e começar a escrever nossa função logaritmo em Python: 
+  
+  \vspace{1ex}
+  \texttt{git checkout logx}
+  \vspace{1ex}
+
+  Até agora, os dois "galhos" são \textbf{idênticos} do ponto de vista do Git (tem o mesmo \textit{log} de commits). 
+  Porém, a partir do momento que terminar de editar o script da sua calculadora, suponha \texttt{calculadora.py}, e oficializar a mudança 
+  com \texttt{git commmit}, serão diferentes. 
+
+  Cada um dos dois branches são \textbf{independentes} e qualquer mudança feito em um não afeta o outro e vice-versa. 
+  Essa é uma das ferramentas mais poderosas do Git!
+
+  \paragraph{Criação de branch vazio}
+  \paragraph{}
+
+  O processo de criação de um branch órfão é bem direto: 
+
+  \vspace{1ex}
+  \texttt{git switch --orphan branchVazio}
+  \vspace{1ex}
+
+  O uso de \texttt{switch} ao invés de \texttt{checkout} está relacionado com o fato do primeiro lhe gerar uma pasta 
+  sem arquivos do branch em que estava trablhando anteriormente. Isso permite que você possa alterar completamente a 
+  árvore de código desse branch de forma simples.
 
   \newpage
   \section{Sobre o autor}
@@ -731,12 +797,12 @@
   e pode ajudar alguém no futuro. 
 
   Ao longo do texto, faço referências à comunidade \textit{open source}, então seria, no mínimo, esquisito caso esse livro não o fosse.
-  O código fonte está disponível no meu GitHub e é (até o momento) 100\% escrito em \LaTeX. Haverão sugestões, críticas, erros etc nesse livro, 
+  O código fonte está disponível no meu GitHub e é (até o momento) 100\% escrito em \LaTeX. Haverão sugestões, críticas, erros, etc nesse livro, 
   então, por favor, não hesite em destacá-los em nosso \href{https://github.com/OmarMesqq/livro}{repositório}. 
 
   
   Trabalho como desenvolvedor web e de sistemas no Instituto de Física da Universidade Federal do Rio de Janeiro (UFRJ) e meus 
-  interesses são basicamente tudo - estou sempre querendo aprender algo, não importa o que. Contudo, ultimamente tenho estudado 
+  interesses são basicamente tudo --- estou sempre querendo aprender algo, não importa o que. Contudo, ultimamente tenho estudado 
   bastante sobre Matemática da Computação, DevOps e aplicações da computação à Engenharia Química.
 
   \subsubsection{Contato}

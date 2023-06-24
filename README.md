@@ -1,8 +1,41 @@
 ## Computação básica
-### Uma simples introdução ao Linux, Python e Git 
-#### Por Omar Mesquita
+### Por Omar Mesquita
 
+### O que é isso? 
+
+Esse livro introduz conceitos-chave para começar no mundo de desenvolvimento de software, computação científica e, em breve, 
+operações. Ao longo do texto trato de três grandes temas: 
+
+1- **Linux**: Particularmente, os comandos mais importantes da shell `sh` e suas derivadas 
+
+2- **Python**: A configuração de um ambiente virtual Python com um pouco de seu contexto técnico e instalação de pacotes (não se trata de um tutorial de programação!)
+
+3- **Git**: Principais comandos e a importância de um sistema de versionamento de software 
+
+### Pré-requisitos 
+
+- Um computador com Linux instalado (ao longo do texto, uso o [Ubuntu](https://ubuntu.com/) como referência)
+- Inglês básico 
+- Ter uma noção incial em qualquer linguagem de programação é um bônus para o capítulo que trata de Python
+
+### Agradecimentos 
+
+Muitas pessoas me motivaram a escrever esse livreto, mas destaco aqui meu orientador de iniciação científica, 
+[Graziâni Candiotto](https://github.com/gcandiotto), colega do meu grupo de pesquisa 
+[Leandro Benatto](https://github.com/LeandroBenatto) e meu ajudante de pesquisa [José Guilherme](https://github.com/chimbalada).
+
+
+Também utilizei inúmeros serviços para esclarecer minhas dúvidas durante meu processo de escrita: 
+
+- [StackOverflow](https://stackoverflow.com/)
+- [Overleaf Learn](https://www.overleaf.com/learn)
+- [Wikipedia](wikipedia.org)
+- [Arch Wiki](https://wiki.archlinux.org/)
+- [Pixabay](https://pixabay.com/)
 
 TO-DO: 
-- SSH
-- Containers 
+
+- Tratar sobre: 
+    - SSH
+    - Containers 
+    
