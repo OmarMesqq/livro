@@ -27,11 +27,19 @@ Muitas pessoas me motivaram a escrever esse livreto, mas destaco aqui meu orient
 
 Também utilizei inúmeros serviços para esclarecer minhas dúvidas durante meu processo de escrita: 
 
-- [StackOverflow](https://stackoverflow.com/)
+- [Stack Overflow](https://stackoverflow.com/)
 - [Overleaf Learn](https://www.overleaf.com/learn)
 - [Wikipedia](wikipedia.org)
 - [Arch Wiki](https://wiki.archlinux.org/)
 - [Pixabay](https://pixabay.com/)
+
+
+### Download 
+
+Esse livro é gratuito e está sujeito a [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html). 
+Fique à vontade para modificar e distribuir o `.pdf` final e/ou o código fonte de forma gratuita! 
+Você pode acompanhar as várias versões na aba [Releases](https://github.com/OmarMesqq/livro/releases) ou pode 
+baixar a última versão diretamente [clicando aqui](https://github.com/OmarMesqq/livro/releases/download/1.0/Computacao_Basica_1a_ed.pdf).
 
 TO-DO: 
 
