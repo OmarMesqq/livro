@@ -28,6 +28,7 @@
 	\date{}
 	\author{Omar Mesquita}
 	\maketitle
+	\thispagestyle{empty}
 	
 	\newpage
 	\tableofcontents
@@ -473,7 +474,7 @@
 		\centering
 	  	\includegraphics[scale=0.3]{figs/software_tree.png} 
 		\caption*{Projeto de calculadora com visualização em árvore Git}
-  \end{figure}
+  	\end{figure}
 
   \subsubsection{Apêndice: paridade do desenvolvimento}
 
@@ -604,9 +605,9 @@
   \texttt{git commit -m \textquotesingle\!\textquotesingle editei o README. Escrevi meu nome\textquotesingle\!\textquotesingle}
   \vspace{1ex}
 
-  Note a flag de mensagem \texttt{-m} que passei para o comando. À medida que as pessoas se tornam desenvolvedores mais experientes, 
+  Note a flag de mensagem \texttt{-m} que passei para o comando. À medida que as pessoas se tornam desenvolvedoras mais experientes, 
   é comum que abandonem o hábito de commitar com mensagens. Tente evitar isso. É uma excelente prática demonstrar o que você está 
-  mudando em um repositório. Isso ajuda as pessoas desenvolvedoras que trabalham com você, as pessoas que visualizam o código por foram
+  mudando em um repositório. Isso ajuda as pessoas desenvolvedoras que trabalham com você, aquelas que visualizam o código por fora
   de sua organização/empresa, as que vierem depois de você e, não ironicamente, você no futuro. 
 
   \subsubsection{Saindo. O push}
@@ -631,7 +632,7 @@
   Nota-se que o comando \texttt{git push} recebeu uma flag com um modificador e um argumento. Vejamos um por um: 
 
   \begin{enumerate}
-	\item{\texttt{-u}: essa flag significa \textit{set upstream},ou seja, você está alterando o servidor remoto com suas mudanças}
+	\item{\texttt{-u}: essa flag significa \textit{set upstream}, ou seja, você está alterando o servidor remoto com suas mudanças}
 	\item{\texttt{origin}: esse modificador indica que o \textit{upstream} é o próprio repositório trazido pelo \texttt{git clone}}
 	\item{\texttt{main}: esse argumento especifica o branch para o qual as mudanças estão sendo feitas}
   \end{enumerate}
@@ -651,10 +652,11 @@
   Esse arquivo já foi muito falado nesse livreto e chegou a hora de analisá-lo a fundo. Ele, assim como a pasta \texttt{.git} 
   é padrão do Git e são colocados na pasta do seu repo quando você o cria ou o clona. Tome o exemplo da 
   seção \href{sec:clone}{seção 3.2.1} e entre em seu diretório. Caso rode \texttt{ls}, deverá ver seu único arquivo, 
-  \texttt{README.md}, mas existem arquivos "invisíveis". 
+  \texttt{README.md}, mas a pasta \texttt{.git} está aí, ela só não está visível à primeira vista.
   
-  Passe a flag \texttt{-A} para o \texttt{ls}, a qual lista \textbf{todos} os arquivos e diretórios presentes numa pasta. 
-  Agora a pasta \texttt{.git} está visível. Os motivos de existirem arquivos invisíveis em seu sistema são várias e algumas delas são:
+  Em SOs \textit{Unix-like}, aqui, no Linux, arquivos e pastas precedidos por um ponto são chamados de \textit{dotfiles}.
+  Para visualizá-los, passe a flag \texttt{-A} para o \texttt{ls}, a qual lista \textbf{todos} os arquivos e diretórios presentes numa pasta. 
+  Agora a pasta \texttt{.git} está visível. Os motivos de existirem arquivos "invisíveis" em seu sistema são várias e algumas delas são:
   
   \begin{itemize}
 	\item{São gerados em massa}
@@ -664,8 +666,8 @@
 	\item{Não foram feitos para serem editados por pessoas não técnicas}
   \end{itemize}
 
-  e, por isso, caso fossem visíveis, tornariam suas pastas muito confusas. Não se iluda, esse tipo de arquivo também existe no 
-  Windows e no MacOS, só são mais difíceis de visualizar nesses SOs. 
+  e, por isso, caso fossem visíveis, tornariam suas pastas muito confusas. Esse tipo de arquivo também existe no 
+  Windows e no MacOS, embora sua visualização seja menos direta nesses SOs. 
   
   Dito isso, sinta-se à vontade para explorar o que há dentro da \texttt{.git}, mas nosso foco está no arquivo que iremos criar
   agora.
@@ -703,7 +705,7 @@
   do repositório não será adicionado para mudanças remotas com o \texttt{git add}.
   
   
-  \subsubsection{Atualizando local com mudanças do remoto}
+  \subsubsection{Voltando. O pull}
 
   Assim como vimos o "empurrar" do Git, vemos agora o "puxar". O que fizemos em \href{sec:push}{3.2.5} foi atualizar o remoto com 
   mudanças locais. Suponha que você tenha uma cópia do repo antiquada (sem a atualização do último commit feito). Para sincronizar 
@@ -713,7 +715,7 @@
   \texttt{git pull}
   \vspace{1ex}
  
-  %\subsubsection{Criando branches}
+  \subsubsection{Criando branches}
 
   
   %\section{Agradecimentos}	
@@ -729,7 +731,8 @@
   e pode ajudar alguém no futuro. 
 
   Ao longo do texto, faço referências à comunidade \textit{open source}, então seria, no mínimo, esquisito caso esse livro não o fosse.
-  O código fonte está disponível no meu GitHub e é (até o momento) 100\% escrito em \LaTeX. Haverão sugestões, críticas, erros etc nesse livro, então, por favor, não hesite em destacá-los em seu \href{https://github.com/OmarMesqq/livro}{repositório}. 
+  O código fonte está disponível no meu GitHub e é (até o momento) 100\% escrito em \LaTeX. Haverão sugestões, críticas, erros etc nesse livro, 
+  então, por favor, não hesite em destacá-los em nosso \href{https://github.com/OmarMesqq/livro}{repositório}. 
 
   
   Trabalho como desenvolvedor web e de sistemas no Instituto de Física da Universidade Federal do Rio de Janeiro (UFRJ) e meus 
