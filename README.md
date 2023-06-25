@@ -40,7 +40,13 @@ Fique à vontade para modificar e distribuir o `.pdf` final e/ou o código fonte
 Você pode acompanhar as várias versões na aba [Releases](https://github.com/OmarMesqq/livro/releases) ou pode 
 baixar a última versão diretamente [clicando aqui](https://github.com/OmarMesqq/livro/releases/download/1.0/Computacao_Basica_1a_ed.pdf).
 
-TO-DO: 
+### Imagens 
+
+As imagens nesse livro foram obtidas da Internet — StackOverflow, Pixabay — e, por isso, não são minhas ou 
+são imagens *royalty free* que foram baixadas e editadas (porcamente) no [GIMP](https://www.gimp.org/). Os modelos 
+para edição estão na pasta `templates`.
+
+### TO-DO: 
 
 - Tratar sobre: 
     - SSH
