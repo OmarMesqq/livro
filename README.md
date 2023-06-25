@@ -21,8 +21,7 @@ operações. Ao longo do texto trato de três grandes temas:
 ### Agradecimentos 
 
 Muitas pessoas me motivaram a escrever esse livreto, mas destaco aqui meu orientador de iniciação científica, 
-[Graziâni Candiotto](https://github.com/gcandiotto), colega do meu grupo de pesquisa 
-[Leandro Benatto](https://github.com/LeandroBenatto) e meu ajudante de pesquisa [José Guilherme](https://github.com/chimbalada).
+[Graziâni Candiotto](https://github.com/gcandiotto) que me selecionou como pesquisador no Instituto de Física da UFRJ, permitindo que pudesse escrever esse material.
 
 
 Também utilizei inúmeros serviços para esclarecer minhas dúvidas durante meu processo de escrita: 
