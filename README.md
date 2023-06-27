@@ -18,20 +18,6 @@ operações. Ao longo do texto trato de três grandes temas:
 - Inglês básico 
 - Ter uma noção incial em qualquer linguagem de programação é um bônus para o capítulo que trata de Python
 
-### Agradecimentos 
-
-Muitas pessoas me motivaram a escrever esse livreto, mas destaco aqui meu orientador de iniciação científica, 
-[Graziâni Candiotto](https://github.com/gcandiotto) que me selecionou como pesquisador no Instituto de Física da UFRJ, permitindo que pudesse escrever esse material.
-
-
-Também utilizei inúmeros serviços para esclarecer minhas dúvidas durante meu processo de escrita: 
-
-- [Stack Overflow](https://stackoverflow.com/)
-- [Overleaf Learn](https://www.overleaf.com/learn)
-- [Wikipedia](wikipedia.org)
-- [Arch Wiki](https://wiki.archlinux.org/)
-- [Pixabay](https://pixabay.com/)
-
 
 ### Download 
 
