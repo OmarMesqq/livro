@@ -6,11 +6,11 @@
 Esse livro introduz conceitos-chave para começar no mundo de desenvolvimento de software, computação científica e, em breve, 
 operações. Ao longo do texto trato de três grandes temas: 
 
-1- **Linux**: Particularmente, os comandos mais importantes da shell `sh` e suas derivadas 
+1) **Linux**: Particularmente, os comandos mais importantes da shell `sh` e suas derivadas 
 
-2- **Python**: A configuração de um ambiente virtual com um pouco de contexto técnico e instalação de pacotes (não se trata de um tutorial de programação!)
+2) **Python**: A configuração de um ambiente virtual com um pouco de contexto técnico e instalação de pacotes (não se trata de um tutorial de programação!)
 
-3- **Git**: Principais comandos e a importância de um sistema de versionamento de software 
+3) **Git**: Principais comandos e a importância de um sistema de versionamento de software 
 
 ### Pré-requisitos 
 
