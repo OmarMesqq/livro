@@ -16,7 +16,7 @@ operações. Ao longo do texto trato de três grandes temas:
 
 - Um computador com Linux instalado (ao longo do texto, uso o [Ubuntu](https://ubuntu.com/) como referência)
 - Inglês básico 
-- Ter uma noção incial em qualquer linguagem de programação é um bônus para o capítulo que trata de Python
+- Ter uma noção incial em qualquer linguagem de programação vai te ajudar no capítulo que trata de Python
 
 
 ### Download 
@@ -28,7 +28,8 @@ baixar a última versão diretamente [clicando aqui](https://github.com/OmarMesq
 
 ### Imagens 
 
-As imagens nesse livro foram obtidas da Internet — StackOverflow, Pixabay — e, por isso, não são minhas ou 
+As imagens nesse livro foram obtidas da Internet — principalmente do [Pixabay](https://pixabay.com/) — e, 
+por isso, não são minhas ou 
 são imagens *royalty free* que foram baixadas e editadas (porcamente) no [GIMP](https://www.gimp.org/). Os modelos 
 para edição estão na pasta `templates`.
 
